@@ -5,14 +5,14 @@ import AuthContext from "../../Store/AuthContext";
 
 const useForm = () => {
 
-    const { isLoading, httpError, sendRequest } =  useHttp(getLeadsFields);
+    const { isLoading, error, sendRequest } =  useHttp(getLeadsFields);
     const [formObj, setFormObj]= useState({});  
     const ctx = useContext(AuthContext);
     
     useEffect(() => {
         sendRequest(ctx.orgId,(data)=> {
             setFormObj(data);
-        });
+        })
     },[]);
 
   const inputHandler = useCallback((event, section) => {
@@ -23,11 +23,10 @@ const useForm = () => {
      setFormObj({...newFormObj});
 
   },[formObj])
-
     return {
         inputHandler,
         isLoading,
-        httpError,
+        httpError: error,
         address: formObj.address,
         information: formObj.information
     }

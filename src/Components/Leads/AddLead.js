@@ -10,18 +10,19 @@ import AuthContext from '../../Store/AuthContext';
 
 const AddLead = () => {
 
+    const { inputHandler, address, information, isLoading, httpError} = useForm(getLeadsFields);
     const { sendRequest, error } = useHttp( postLeadRecord);
-    const { inputHandler, address, information, isLoading} = useForm(getLeadsFields);
-    const ctx = useContext(AuthContext);
-    let informationFields, addressFields;
     const [description, setDescription] = useState("");
 
+    const ctx = useContext(AuthContext);
+    let informationFields, addressFields;
     const history = useHistory();
 
     const onCancelHandler = (event) => {
         event.preventDefault();
         history.goBack(-1);
     }
+
     if(address) {
          addressFields = <React.Fragment>
                             <h3>Address Information</h3>
@@ -30,6 +31,7 @@ const AddLead = () => {
                             </div>
                             </React.Fragment>
     }
+    
     if(information) {
         informationFields =  <React.Fragment>
                                 <h3>Lead Information</h3>
@@ -42,7 +44,7 @@ const AddLead = () => {
                                     value={obj.value} 
                                     section={obj.section} 
                                     handleChange={inputHandler}
-                                    error={error}
+                                    error={httpError}
                                     />) }       
                                 </div>
                                 </React.Fragment>

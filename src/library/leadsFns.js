@@ -2,7 +2,6 @@
 const url = "http://localhost:8080";
 
 export const getLeadsFields = async (orgId, token) => {
-    console.log(token);
     const response = await fetch(`${url}/org/${orgId}/leads/leadstable`,{
         method:"GET",
         headers : {

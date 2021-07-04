@@ -14,11 +14,12 @@ const useHttp = (requestFn) => {
            sendData(responseData);
         } catch (error) {
             setIsLoading(false);
+            console.log(error.message)
             setError({
                 isValid: error.isValid,
                 message: error.message,
                 value: error.value
-            })
+            });
         }
         setIsLoading(false);
     }
@@ -26,7 +27,7 @@ const useHttp = (requestFn) => {
         isLoading,
         sendRequest,
         error
-    }
+    };
 
 }
 
