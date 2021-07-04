@@ -4,7 +4,7 @@ import { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LoadingPage from './loadingPage';
 import useInput from '../Hooks/inputHook';
-import AuthContext from '../Store/AuthContext';
+import AuthContext from '../Store/Auth/AuthContext';
 import useHttp from '../Hooks/httpHook';
 import { postSignIn } from '../library/authFns';
 

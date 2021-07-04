@@ -2,19 +2,21 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
 import useForm from '../../Hooks/Leads/useForm';
 import styles from './AddLead.module.css';
-import { getLeadsFields, postLeadRecord } from '../../library/leadsFns';
+import { postLeadRecord } from '../../library/leadsFns';
 import LoadingPage from '../../Pages/loadingPage';
 import Input from '../Input/Input';
 import useHttp from '../../Hooks/httpHook';
-import AuthContext from '../../Store/AuthContext';
+import AuthContext from '../../Store/Auth/AuthContext';
+
 
 const AddLead = () => {
-
-    const { inputHandler, address, information, isLoading, httpError} = useForm(getLeadsFields);
+    
+    const { inputHandler, address, information, isLoading } = useForm();
     const { sendRequest, error } = useHttp( postLeadRecord);
     const [description, setDescription] = useState("");
 
     const ctx = useContext(AuthContext);
+
     let informationFields, addressFields;
     const history = useHistory();
 
@@ -22,7 +24,6 @@ const AddLead = () => {
         event.preventDefault();
         history.goBack(-1);
     }
-
     if(address) {
          addressFields = <React.Fragment>
                             <h3>Address Information</h3>
@@ -31,7 +32,7 @@ const AddLead = () => {
                             </div>
                             </React.Fragment>
     }
-    
+
     if(information) {
         informationFields =  <React.Fragment>
                                 <h3>Lead Information</h3>
@@ -44,7 +45,7 @@ const AddLead = () => {
                                     value={obj.value} 
                                     section={obj.section} 
                                     handleChange={inputHandler}
-                                    error={httpError}
+                                    error={error}
                                     />) }       
                                 </div>
                                 </React.Fragment>
@@ -52,7 +53,7 @@ const AddLead = () => {
 
     const saveHandler = (e) => {
         e.preventDefault();
-        let leadObj = { description, orgId: ctx.orgId, userId: ctx.userId };
+        let leadObj = { description, orgId: ctx.orgId };
 
         Object.values(address).map(leadAddress =>  leadObj = { ...leadObj, [leadAddress.name] : leadAddress.value });
         Object.values(information).map(leadInfo => leadObj = { ...leadObj, [leadInfo.name]: leadInfo.value });

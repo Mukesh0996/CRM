@@ -21,10 +21,13 @@ export const getLeadsFields = async (orgId, token) => {
 }
 
 export const postLeadRecord = async(data, token) =>{
-    console.log(token);
-    const response = await fetch(`${url}/org/${data.orgId}/leads/addrecord`,{
+
+    const { orgId } = data;
+    delete data['orgId'];
+    const leadObj = data;
+    const response = await fetch(`${url}/org/${orgId}/leads/addrecord`,{
         method:"POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(leadObj),
         headers :{
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`

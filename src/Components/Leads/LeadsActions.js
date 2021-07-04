@@ -18,7 +18,7 @@ const LeadActions = () => {
                 <Link className={styles.btn} to={`${match.url}/add-lead`}>Add Lead<div></div></Link>
                 <div className={styles.additional}>
                 <button className={`${styles["btn"]} ${styles["btn-alt"]}`} onClick={showActionHandler}>Actions</button>
-                    { true && <div className={styles["other-actions"]}>
+                    { showOtherActions && <div className={styles["other-actions"]}>
                         <ul className={styles["actions-list"]}>
                             <li>Send Email</li>
                             <li>Bulk Update</li>

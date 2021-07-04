@@ -1,16 +1,16 @@
 import { useEffect, useState, useCallback, useContext } from "react";
 import useHttp from "../httpHook"
-import { getLeadsFields } from '../../library/leadsFns';
-import AuthContext from "../../Store/AuthContext";
+import AuthContext from "../../Store/Auth/AuthContext";
+import { getFields } from "../../Store/Leads/leads-actions";
 
 const useForm = () => {
 
-    const { isLoading, error, sendRequest } =  useHttp(getLeadsFields);
+    const { isLoading, error, sendRequest } =  useHttp(getFields);
     const [formObj, setFormObj]= useState({});  
     const ctx = useContext(AuthContext);
     
     useEffect(() => {
-        sendRequest(ctx.orgId,(data)=> {
+        sendRequest(ctx.orgId, (data)=> {
             setFormObj(data);
         })
     },[]);

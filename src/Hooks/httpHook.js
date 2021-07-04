@@ -1,12 +1,12 @@
 import { useContext, useState } from "react"
-import AuthContext from "../Store/AuthContext";
+import AuthContext from "../Store/Auth/AuthContext";
 
 
 const useHttp = (requestFn) => {
-
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState({isValid: false, value:"", message:""});
     const ctx = useContext(AuthContext);
+
     const sendRequest = async (data, sendData) => {
         setIsLoading(true);
         try {
@@ -14,7 +14,6 @@ const useHttp = (requestFn) => {
            sendData(responseData);
         } catch (error) {
             setIsLoading(false);
-            console.log(error.message)
             setError({
                 isValid: error.isValid,
                 message: error.message,
@@ -27,7 +26,7 @@ const useHttp = (requestFn) => {
         isLoading,
         sendRequest,
         error
-    };
+    }
 
 }
 

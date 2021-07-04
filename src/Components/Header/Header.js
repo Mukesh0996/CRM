@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import {NavLink} from 'react-router-dom';
-import AuthContext from '../../Store/AuthContext';
+import AuthContext from '../../Store/Auth/AuthContext';
 import styles from './Header.module.css';
 
 const Header = () => {

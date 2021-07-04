@@ -8,7 +8,7 @@ import SignIn from './Pages/Signin';
 import Signup from './Pages/Signup';
 import Header from './Components/Header/Header';
 import AddLead from './Components/Leads/AddLead';
-import AuthContext from './Store/AuthContext';
+import AuthContext from './Store/Auth/AuthContext';
 
 function App() {
 
@@ -22,10 +22,10 @@ function App() {
           <Route path="/signup">
               <Signup/>
           </Route>
-          <Route path="/home/org/:orgId"> { isLoggedIn ? <Home/> : <SignIn/>}</Route>
-          <Route path="/leads/org/:orgId/" exact> { isLoggedIn ? <LeadsModule/> : <SignIn/> }</Route>
-          <Route path="/leads/org/:orgId/add-lead" exact><AddLead/></Route>
-          <Route path="/contacts/org/:orgId"> { isLoggedIn ? <Contacts/> : <SignIn/> } </Route>
+          <Route path="/home/org/:orgId"> { isLoggedIn ? <Home/> : <Redirect to={"/"}/>}</Route>
+          <Route path="/leads/org/:orgId/" exact> { isLoggedIn ? <LeadsModule/> : <Redirect to={`/`}/> }</Route>
+          <Route path="/leads/org/:orgId/add-lead" exact>{ isLoggedIn ? <AddLead/> : <Redirect to={"/"}/> } </Route>
+          <Route path="/contacts/org/:orgId"> { isLoggedIn ? <Contacts/> : <Redirect to={"/"}/> } </Route>
           { <Route path="*" render={()=> <Redirect to="/"/>}/> }
         </Switch>
       </Fragment>
