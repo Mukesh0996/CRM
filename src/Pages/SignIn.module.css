@@ -1,0 +1,174 @@
+html {
+    overflow: hidden;
+}
+
+.signup {
+    width: 100%;
+    position: fixed;
+    top:0px;
+    height: auto;
+    background-color: white;
+    text-align: right;
+}
+
+.signup button  {
+    padding: 0.5rem 1.2rem;
+    background: white;
+    border: 1px solid #EF4444;
+    margin: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.signup button > a {
+    color: #EF4444;
+    text-decoration: none;
+    font: inherit;
+    font-weight: bold;
+}
+
+.signup button:hover {
+    background: #EF4444;
+}
+.signup button:hover > a {
+    color: white;
+}
+  
+.signinContainer {
+    padding: 1rem;
+    border: 1px solid whitesmoke;
+    background: white;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+
+.form {
+    float: left;
+    width: 500px;
+    padding: 0.8rem 0 0.8rem  0.8rem ;
+}
+
+.form-detail {
+    margin-bottom: 1rem;
+}
+
+.form-detail h1, .form-detail p {
+    margin-bottom: 0.5rem;
+}
+
+.rightContainer {
+    display: none;
+}
+ .form-control label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+.form-control {
+    margin-bottom: 1.5rem;
+}
+
+.form-control input {
+    width: 100%;
+    padding: 0.5rem;
+    background: #d1d6dd;
+    border: 1px solid #d1d6dd;
+    outline: none;
+    font: inherit;
+    border-radius: 4px;
+}
+
+.form-control input:focus {
+    border: 1px solid #3B82F6;
+}
+
+.submitBtn {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    font: inherit;
+    margin: 1rem 0;
+    background-color: #3B82F6;
+    color: white;
+    border: 1px solid #3B82F6;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+
+.submitBtn:hover {
+    color: #3B82F6;
+    background-color: white;
+}
+
+.error {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+}
+
+@media (min-width:40rem) {
+
+    .signinContainer {
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        height: 100vh; 
+        padding: 1rem;   
+    }
+    .rightContainer {
+        display: none;
+    }
+    
+}
+
+
+@media (min-width: 50rem) {
+    .signinContainer {
+        display: block;
+        margin-top: 30%;
+        height: 40vh;
+        border-radius: 4px;
+    }
+    .form {
+        width: 400px;
+    }
+    .form-control input, .form-control label {
+        width: 90%;
+    }
+    .submitBtn {
+        width: 90%;
+    }
+    .rightContainer {
+        display: flex;
+        width: 360px;
+        float: right;
+        border-left: 1px solid rgb(189, 189, 189);
+        height: 340px;
+        align-items: center;
+       justify-content: center;
+    }
+    .rightContainer img {
+        width: 300px;
+        height: 300px;
+        
+    }
+
+}
+
+@media (min-width: 56.25rem) {
+    .signinContainer {
+        width: 900px;
+        margin: 0 auto;
+        margin-top: 15%;
+        padding: 0;
+    }
+    .form {
+        width: 500px;
+    }
+}

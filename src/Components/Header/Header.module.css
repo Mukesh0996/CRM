@@ -1,0 +1,36 @@
+.main-header {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #2563EB;
+    color: white;
+}
+
+.brand {
+    font-size: 24px;
+    display: inline-block;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-left: 2rem;
+}
+.navigation{
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 90px);
+}
+
+.item {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 14px 15px;
+
+}
+ .item a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.item a.active, .item a:hover {
+    font-weight: bolder;
+}

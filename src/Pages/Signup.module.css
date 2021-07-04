@@ -1,0 +1,138 @@
+.signin {
+    position: fixed;
+    width: 100%;
+    top:0px;
+    text-align: right;
+    background: white;
+}
+.signUp {
+    text-align: center;
+
+}
+.signin p {
+    display: inline-block;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    font-weight: bold;
+}
+.signin a {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: #EF4444;
+    font-weight: bold;
+    margin-top: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.signupContainer {
+    margin-top: 30%;
+    width: 100%;
+    background: white;
+    border-radius: 4px;
+    position: relative;
+}
+.form {
+    padding: 1rem;
+}
+.form-detail h1, .form-detail p {
+    margin-bottom: 0.5rem;
+}
+.form-control {
+    margin-bottom: 0.9rem;
+}
+
+.form-control label {
+    padding: 0.5rem;
+    display: block;
+    font: inherit;
+    font-weight: bold;
+    width: 100%;
+}
+.form-control input {
+    padding: 0.5rem;
+    background: #d1d6dd;
+    border: 1px solid #d1d6dd;
+    outline: none;
+    font: inherit;
+    border-radius: 4px;
+    width: 100%;
+}
+
+
+.form-control input:focus {
+    border: 1px solid #3B82F6;
+}
+.submitBtn {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    font: inherit;
+    font-weight: bold;
+    background: #EF4444;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border: 1px solid #EF4444;
+    width: 100%;
+}
+.submitBtn:hover {
+    background: white;
+    color: #EF4444;
+}
+
+.error {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+}
+.signinSuccess {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    text-align: center;
+}
+
+@media (min-width: 40rem) {
+    .signupContainer {
+        margin-top: 15%;
+        width: auto;
+    }
+    .form-control label, .form-control input {
+        width: 90%;
+    }
+    .submitBtn {
+        width: 90%;
+    }
+
+}
+
+@media (min-width: 50rem) {
+    .signupContainer {
+        margin-top: 15%;
+        width: auto;
+    }
+    .form-control label, .form-control input {
+        width: 90%;
+    }
+    .submitBtn {
+        width: 90%;
+    }
+
+    
+}
+
+@media (min-width: 56.25rem) {
+   .signupContainer {
+       width: 540px;
+       margin: 0 auto;
+       margin-top:7%;
+       height: 72vh;
+   }
+  
+   .form-control label , .form-control input {
+       width: 90%;
+   }
+    .submitBtn {
+        width: 90%;
+       
+    }
+}

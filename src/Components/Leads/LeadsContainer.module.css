@@ -1,0 +1,26 @@
+.leadsContainer {
+   display: flex;
+   justify-content: space-between;
+}
+.leadsfilter {
+    width: 20%;
+    margin: 1rem 0.7rem;
+    padding: 5px;
+    height: 81vh;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.leadsfilter p {
+    padding: 0.5rem 0.5rem;
+    color: #6B7280;
+    font-weight: bold;
+}
+.leadsrecords{
+    width: 80%;
+    height: 81vh;
+    background: #fff;
+    padding: 5px;
+    margin: 1rem 0;
+    border-radius: 10px;
+}

@@ -1,0 +1,77 @@
+.lead-actions {
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 6%);
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    color: white;
+    background: #60A5FA;
+    border: 1px solid #60A5FA;
+    border-radius: 4px;
+    cursor: pointer;
+    font: inherit;
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+.btn div {
+    height: 100%;
+    width: 50px;
+}
+
+.btn:hover {
+    background: #fff;
+    color: #60A5FA;
+}
+
+.btn-alt {
+    color: #60A5FA;
+    background: #fff;
+}
+
+.btn-alt:hover {
+    color: #fff;
+    background: #60A5FA;
+}
+
+
+.actions {
+    display: flex;
+}
+.additional {
+    position: relative;
+}
+.other-actions{
+    position: absolute;
+    margin-top: 2px;
+    top: -400px;
+    right: 0px;
+    background: white;
+    z-index: 500;
+    border-radius: 4px;
+    width: 10rem;
+    text-align: left;
+    color: black;
+    border: 2px solid #d6d6d6!important;
+    box-shadow: 0 1px 3px 0 rgb(134 134 134 / 40%);
+    transition: all 0.3s ease;
+}
+
+
+.other-actions  .actions-list {
+    list-style: none;
+    padding: 10px 0;
+}
+.actions-list li {
+    padding: 8px 10px;
+    cursor: pointer;
+}
+.actions-list li:hover {
+    background: #E5E7EB;
+}
