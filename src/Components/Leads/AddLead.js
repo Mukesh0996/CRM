@@ -2,21 +2,19 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
 import useForm from '../../Hooks/Leads/useForm';
 import styles from './AddLead.module.css';
-import { postLeadRecord } from '../../library/leadsFns';
 import LoadingPage from '../../Pages/loadingPage';
 import Input from '../Input/Input';
 import useHttp from '../../Hooks/httpHook';
 import AuthContext from '../../Store/Auth/AuthContext';
+import { addLeadRecord, getLeadsFields } from '../../Store/Leads/leads-actions';
 
 
 const AddLead = () => {
     
-    const { inputHandler, address, information, isLoading } = useForm();
-    const { sendRequest, error } = useHttp( postLeadRecord);
+    const { inputHandler, address, information, isLoading } = useForm(getLeadsFields);
+    const { sendRequest: addRecord, error } = useHttp( addLeadRecord, true);
     const [description, setDescription] = useState("");
-
     const ctx = useContext(AuthContext);
-
     let informationFields, addressFields;
     const history = useHistory();
 
@@ -57,10 +55,7 @@ const AddLead = () => {
 
         Object.values(address).map(leadAddress =>  leadObj = { ...leadObj, [leadAddress.name] : leadAddress.value });
         Object.values(information).map(leadInfo => leadObj = { ...leadObj, [leadInfo.name]: leadInfo.value });
-
-        sendRequest(leadObj, () => {
-            
-        })
+        addRecord(leadObj);
     }
 
     return (

@@ -1,6 +1,5 @@
-import styles from './LeadsContainer.module.css'
+import styles from './LeadsContainer.module.css';
 const LeadsContainer = () => {
-
 
     return  <section className={styles.leadsContainer}>
                 <section className={styles.leadsfilter}>

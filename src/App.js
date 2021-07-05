@@ -13,7 +13,6 @@ import AuthContext from './Store/Auth/AuthContext';
 function App() {
 
   const { isLoggedIn, orgId} = useContext(AuthContext);
-
   return (
       <Fragment>
         { isLoggedIn && <Header/> }

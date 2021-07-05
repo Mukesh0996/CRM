@@ -15,7 +15,7 @@ const Signup = () => {
 
    const [signIn, setSignIn] = useState("");
     
-   const { isLoading, error, sendRequest } = useHttp(postSignUp);
+   const { isLoading, error, sendRequest } = useHttp(postSignUp, false);
 
    const { value: first_name, 
             valueChangeHandler: firstNameHandler, 

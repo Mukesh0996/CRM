@@ -1,10 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import leadSlice from "./Leads/leads-slice";
-
+import leadActions from './Leads/leads-slice';
 
 const store = configureStore({
     reducer: {
-        lead: leadSlice.reducer
+        leads: leadActions.reducer
     }
 });
 

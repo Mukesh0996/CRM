@@ -25,7 +25,7 @@ const SignIn = () => {
             isValid: passwordValid, 
             isTouched: passwordTouched} = useInput(isEmpty);
 
-    const { isLoading, error, sendRequest } = useHttp(postSignIn);
+    const { isLoading, error, sendRequest } = useHttp(postSignIn, false);
 
     const signInhandler = (e) => {
         e.preventDefault();
