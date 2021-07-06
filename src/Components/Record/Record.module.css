@@ -1,0 +1,16 @@
+.record {
+    display: flex;
+    min-width: 345rem;
+    border-bottom: 1px solid #E5E7EB;
+}
+.column {
+    display: flex;
+    min-width: 18rem;
+    min-height: 2.5rem;
+    align-items: center;
+    padding: 0 1rem;
+    color: #6B7280;
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+}

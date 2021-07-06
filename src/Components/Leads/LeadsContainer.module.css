@@ -1,6 +1,8 @@
 .leadsContainer {
    display: flex;
    justify-content: space-between;
+   position: relative;
+   
 }
 .leadsfilter {
     width: 20%;
@@ -16,11 +18,59 @@
     color: #6B7280;
     font-weight: bold;
 }
-.leadsrecords{
-    width: 80%;
+.leadsrecords {
+    width: 80rem;
     height: 81vh;
+    overflow: auto;
     background: #fff;
-    padding: 5px;
     margin: 1rem 0;
     border-radius: 10px;
+    position: relative;
+}
+
+.leadsrecords::-webkit-scrollbar {
+    display: none;
+}
+.lead-columns {
+    display: flex;
+    min-width: 345rem;
+    box-shadow: 1px 0 5px #ccc;
+}
+.lead-column {
+    display: flex;
+    min-width: 212rem;
+}
+
+input[type="checkbox"] {
+    outline: none;
+    padding: .5rem !important;
+}
+
+.column {
+    display: flex;
+    min-width: 18rem;
+    min-height: 2.5rem;
+    align-items: center;
+    padding: 0 1rem;
+    color: #6B7280;
+    font-weight: bold;
+    border-right: 1px solid #a4a8b1;
+    text-align: left;
+}
+.column:nth-child(2) {
+    margin-left: 4rem;
+}
+.column:nth-child(1){
+    border-bottom: 1px solid #E5E7EB;
+}
+.record {
+    display: flex;
+    min-width: 11rem;
+    min-height: 2.5rem;
+    align-items: center;
+    padding: 0 1rem;
+    color: #6B7280;
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
 }

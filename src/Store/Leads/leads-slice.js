@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let initial = { fields:{}, leads:{}, canEdit: null, canCreate: null }
+let initial = { colums:{}, leads:[], canEdit: null, canCreate: null }
 
 const leadSlice = createSlice({
     name:"leads",
@@ -10,9 +10,11 @@ const leadSlice = createSlice({
             state.leads = action.payload.leads;
             state.canCreate = action.payload.canCreate;
             state.canEdit = action.payload.canEdit;
-        },
-        addFields (state, action) {
-            state.fields = action.payload.fields;
+        }, addLead (state, action) {
+            const lead = action.payload;
+            state.leads.push(lead);
+        }, addColumns (state, action) {
+            state.columns = action.payload.columns
         }
     }
 });

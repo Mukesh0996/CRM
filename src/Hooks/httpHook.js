@@ -19,8 +19,10 @@ const useHttp = (requestFn, dispatcherIsTrue) => {
             } else {
                 responseData = await requestFn(data, ctx.token);
                 sendData(responseData); 
-            }                      
+            }   
+                 
         } catch (error) {
+            console.log(responseData)
             setIsLoading(false);
             setError({
                 isValid: error.isValid,

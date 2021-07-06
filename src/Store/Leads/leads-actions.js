@@ -21,11 +21,51 @@ export const getLeadsFields = async (orgId, token) => {
     return responseData;
 }
 
+export const getColumns = (orgId, token) => {
+    return async (dispatch) => {
+        const response = await fetch(`${url}/org/${orgId}/leads/getcolumns`,{
+            method:"GET",
+            headers : {
+                "Content-Type":"application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        const responseData = await response.json();
+        if(!response.ok) {
+            let error = new Error(responseData.message || "Error Occured!")
+            error.isValid = responseData.isValid || false;
+            error.value = responseData.value || "";
+            throw(error);
+        }
+        dispatch(leadActions.addColumns({
+            columns: responseData.data
+        }))
+       
+    }
+}
 
-export const getAllLeads = () => {
-    return (dispatch) => {
+
+export const getAllLeads = (orgId, token) => {
+    return async (dispatch) => {
+        const response = await fetch(`${url}/org/${orgId}/leads/getrecords`,{
+            method:"GET",
+            headers :{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+        const responseData = await response.json();
+        if(response.ok) {
+            let error = new Error(responseData.message || "Error Occured!")
+            error.isValid = responseData.isValid || false;
+            error.value = responseData.value || "";
+            console.log(error);
+            throw(error);
+        }
         dispatch(leadActions.replaceLeads({
-            leads:["one", "two", "three"]
+            leads: responseData.data,
+            canCreate : true,
+            canEdit: true
         }))
     }
 }
@@ -33,7 +73,6 @@ export const getAllLeads = () => {
 export const addLeadRecord = (data, token) => {
 
     return async (dispatch) => {
-        console.log("executing");
         const { orgId } = data;
         delete data['orgId'];
         const leadObj = data;
@@ -52,8 +91,12 @@ export const addLeadRecord = (data, token) => {
         let error = new Error(responseData.message);
         error.isValid = responseData.isValid || false;
         error.value = responseData.value || "";
-        throw(error)
+        throw(error);
     }
-    console.log("res",responseData);
+
+    dispatch(leadActions.addLead({
+        lead: responseData.data
+    }));
+
     }
 }

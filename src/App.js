@@ -17,14 +17,14 @@ function App() {
       <Fragment>
         { isLoggedIn && <Header/> }
         <Switch>
-          <Route path="/" exact> { !isLoggedIn ? <SignIn/> : <Redirect to={`/home/org/${orgId}`}/>}</Route>
+          <Route path="/" exact> { !isLoggedIn ? <SignIn/> : <Redirect to={`/org/${orgId}/home`}/>}</Route>
           <Route path="/signup">
               <Signup/>
           </Route>
-          <Route path="/home/org/:orgId"> { isLoggedIn ? <Home/> : <Redirect to={"/"}/>}</Route>
-          <Route path="/leads/org/:orgId/" exact> { isLoggedIn ? <LeadsModule/> : <Redirect to={`/`}/> }</Route>
-          <Route path="/leads/org/:orgId/add-lead" exact>{ isLoggedIn ? <AddLead/> : <Redirect to={"/"}/> } </Route>
-          <Route path="/contacts/org/:orgId"> { isLoggedIn ? <Contacts/> : <Redirect to={"/"}/> } </Route>
+          <Route path="/org/:orgId/home"> { isLoggedIn ? <Home/> : <Redirect to={"/"}/>}</Route>
+          <Route path="/org/:orgId/leads" exact> { isLoggedIn ? <LeadsModule/> : <Redirect to={`/`}/> }</Route>
+          <Route path="/org/:orgId/leads/add-lead" exact>{ isLoggedIn ? <AddLead/> : <Redirect to={"/"}/> } </Route>
+          <Route path="/org/:orgId/contacts"> { isLoggedIn ? <Contacts/> : <Redirect to={"/"}/> } </Route>
           { <Route path="*" render={()=> <Redirect to="/"/>}/> }
         </Switch>
       </Fragment>

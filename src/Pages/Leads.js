@@ -1,24 +1,30 @@
+import { useContext } from "react";
 import { Fragment, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import LeadActions from '../Components/Leads/LeadsActions';
 import LeadsContainer from "../Components/Leads/LeadsContainer";
 import useHttp from "../Hooks/httpHook";
-import { getAllLeads } from "../Store/Leads/leads-actions";
+import AuthContext from "../Store/Auth/AuthContext";
+import { getAllLeads, getColumns } from "../Store/Leads/leads-actions";
 
 const LeadsModule = () => {
-    
-   const {sendRequest, isLoading, error } = useHttp(getAllLeads, true);
+    const ctx = useContext(AuthContext);
 
-   useEffect(() => {
-    sendRequest();
-   },[])
+    const { sendRequest: getLeads, isLoading, error } = useHttp(getAllLeads, true);
+    const {sendRequest : getLeadColumns, isLoading: loadingColumns} = useHttp(getColumns, true);
+    console.log(error);
+    useEffect(() => {
+       getLeads(ctx.orgId);
+       getLeadColumns(ctx.orgId);
+      
+    },[]);
 
-   const leads = useSelector(state => state.leads.leads);
-   console.log(leads);
+    const leadColumns = useSelector(state => state.leads.columns);
+    const leads = useSelector(state => state.leads.leads);
 
     return <Fragment> 
                 <LeadActions/>
-                <LeadsContainer/>
+                <LeadsContainer leadkeys={leadColumns || []} leads={leads} isLoading={isLoading && loadingColumns}/>
             </Fragment>
 }
 

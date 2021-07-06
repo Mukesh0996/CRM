@@ -12,9 +12,9 @@ const Header = () => {
                 <div className={styles.brand}>CRM</div>
                 <nav className={styles.navigation}>
                     <ul className={styles.items}>
-                        <li className={styles.item}><NavLink activeClassName={styles.active}  to={`/home/org/${orgId}`}>Home</NavLink></li>
-                        <li className={styles.item}><NavLink activeClassName={styles.active}  to={`/leads/org/${orgId}`}>Leads</NavLink></li>
-                        <li className={styles.item}><NavLink activeClassName={styles.active}  to={`/contacts/org/${orgId}`}>Contacts</NavLink></li>
+                        <li className={styles.item}><NavLink activeClassName={styles.active}  to={`/org/${orgId}/home`}>Home</NavLink></li>
+                        <li className={styles.item}><NavLink activeClassName={styles.active}  to={`/org/${orgId}/leads`}>Leads</NavLink></li>
+                        <li className={styles.item}><NavLink activeClassName={styles.active}  to={`/org/${orgId}/contacts`}>Contacts</NavLink></li>
                     </ul>
                 </nav>
             </header>
