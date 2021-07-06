@@ -4,20 +4,7 @@
    position: relative;
    
 }
-.leadsfilter {
-    width: 20rem;
-    margin: 1rem 0.7rem;
-    padding: 5px;
-    height: 81vh;
-    background: #fff;
-    border-radius: 10px;
-}
 
-.leadsfilter p {
-    padding: 0.5rem 0.5rem;
-    color: #6B7280;
-    font-weight: bold;
-}
 .leadsrecords {
     width: 82rem;
     height: 81vh;

@@ -20,10 +20,11 @@ const LeadsModule = () => {
 
     const leadColumns = useSelector(state => state.leads.columns);
     const leads = useSelector(state => state.leads.leads);
+
    
     return <Fragment> 
                 <LeadActions/>
-                <LeadsContainer leadkeys={ leadColumns || [] } leads={ leads|| [] } isLoading={isLoading && loadingColumns}/>
+                <LeadsContainer leadCols={ leadColumns || [] } leads={ leads|| [] } isLoading={isLoading && loadingColumns}/>
             </Fragment>
 }
 

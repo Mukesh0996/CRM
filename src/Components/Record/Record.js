@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 const Record = (lead) => {
 
     const checkBoxHandler = () =>{
-        console.log("executing");
+        console.log(lead);
     }
 
     return   <div className={styles.record}>

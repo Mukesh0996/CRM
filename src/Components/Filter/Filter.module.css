@@ -1,0 +1,97 @@
+
+.filterSection {
+    width: 20rem;
+    margin: 1rem 0.7rem;
+    padding: 5px;
+    height: 81vh;
+    background: #fff;
+    border-radius: 10px;
+    overflow: auto;
+}
+ p {
+    padding: 0.5rem 0.5rem;
+    color: #6B7280;
+    font-weight: bold;
+}
+.filterOptions {
+    display: flex;
+    align-items: center;
+    padding: 0 .5rem ;
+}
+
+.lighter {
+    font-weight: lighter !important;
+}
+.lightest {
+    font-weight: bold;
+    font-size: 13px;
+    padding-left: 2rem;
+}
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+.filterCriteria {
+    margin-left: 2rem;
+    max-width: 8.5rem;
+    height: 1.5rem;
+    border: 1px solid #b8bec9;
+    background-color: #fff;
+    text-align: left;
+    border-radius: 10px;
+    color: #6B7280;
+    padding-left: .5rem;
+    position: relative;
+    font-weight: bold;
+}
+
+.filterMethods {
+    position: absolute;
+    top: 23px;
+    width: 10rem;
+    list-style: none;
+    padding: 10px 0;
+    background: #fff;
+    border: 2px solid #d6d6d6!important;
+    box-shadow: 0 1px 3px 0 rgb(134 134 134 / 40%);
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.filterMethods li {
+    padding: 8px 10px;
+    cursor: pointer;
+    
+}
+
+.filterMethods li:hover {
+    background: #E5E7EB;
+}
+.filterInput {
+    margin-left: 2rem;
+}
+.filterInput input {
+    margin: .5rem 0;
+    border: 1px solid #6B7280;
+    border-radius: 5px;
+    outline: none;
+    padding: .3rem;
+}
+
+.filterInput button {
+    background: #2563EB;
+    outline: none;
+    border: 1px solid #2563EB;
+    padding: .3rem;
+    color: #fff;
+    border-radius: 5px;
+}
+.filterInput button:hover {
+    background-color: #1049c4;
+    cursor: pointer;
+}
+
+.select {
+    text-align: center;
+    margin: .3rem
+}
