@@ -16,6 +16,7 @@ const LeadsContainer = ({leadkeys, leads, isLoading}) => {
                     {isLoading && <LoadingPage/>}
                 <section className={styles.leadsfilter}>
                     <p>Filter Leads by:</p>
+                    { leadkeys.map((value, index)=> <div key={index} style={{display:"flex", alignItems:"center", padding:"0 .5rem"}}> <input type="checkbox"/>  <p style={{fontWeight:"lighter"}}>{value.label}</p></div> ) }
                 </section>
                 <section className={styles.leadsrecords}>
                     <div className={styles["lead-columns"]}>

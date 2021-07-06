@@ -12,7 +12,6 @@ const LeadsModule = () => {
 
     const { sendRequest: getLeads, isLoading, error } = useHttp(getAllLeads, true);
     const {sendRequest : getLeadColumns, isLoading: loadingColumns} = useHttp(getColumns, true);
-    console.log(error);
     useEffect(() => {
        getLeads(ctx.orgId);
        getLeadColumns(ctx.orgId);
@@ -21,10 +20,10 @@ const LeadsModule = () => {
 
     const leadColumns = useSelector(state => state.leads.columns);
     const leads = useSelector(state => state.leads.leads);
-
+   
     return <Fragment> 
                 <LeadActions/>
-                <LeadsContainer leadkeys={leadColumns || []} leads={leads} isLoading={isLoading && loadingColumns}/>
+                <LeadsContainer leadkeys={ leadColumns || [] } leads={ leads|| [] } isLoading={isLoading && loadingColumns}/>
             </Fragment>
 }
 

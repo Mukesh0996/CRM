@@ -55,7 +55,7 @@ export const getAllLeads = (orgId, token) => {
             }
         });
         const responseData = await response.json();
-        if(response.ok) {
+        if(!response.ok) {
             let error = new Error(responseData.message || "Error Occured!")
             error.isValid = responseData.isValid || false;
             error.value = responseData.value || "";

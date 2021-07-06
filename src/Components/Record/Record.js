@@ -3,13 +3,14 @@ import {Link} from 'react-router-dom';
 const Record = (lead) => {
 
     const checkBoxHandler = () =>{
-        console.log(lead);
+        console.log("executing");
     }
 
-    return  <Link to={`/`}> <div className={styles.record}>
+    return   <div className={styles.record}>
                 <div style={{minWidth:"3rem", position:"fixed", backgroundColor:"#fff", borderRight:"1px solid #a4a8b1"}} className={styles.column}>
                      <input type="checkbox" onClick={checkBoxHandler}/>
                 </div>
+                <Link className={styles.column} to={`/`}>
                 <div style={{marginLeft:"4rem"}} className={ styles.column}> {lead.lead.company|| "-"} </div> 
                 <div className={ styles.column }> { lead.lead.first_name|| "-" } </div> 
                 <div className={styles.column}> { lead.lead.last_name|| "-" } </div>
@@ -29,8 +30,9 @@ const Record = (lead) => {
                 <div className={styles.column}>{ lead.lead.zip_code|| "-" }</div>
                 <div className={styles.column}> { lead.lead.city|| "-" } </div>
             <div className={styles.column}> { lead.lead.country|| "-" }</div>
+            </Link>
            </div>
-           </Link>
+         
 
 }
 

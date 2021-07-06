@@ -22,7 +22,7 @@ const useHttp = (requestFn, dispatcherIsTrue) => {
             }   
                  
         } catch (error) {
-            console.log(responseData)
+            
             setIsLoading(false);
             setError({
                 isValid: error.isValid,
