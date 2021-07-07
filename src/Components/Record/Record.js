@@ -1,16 +1,20 @@
 import styles from './Record.module.css';
 import {Link} from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from '../../Store/Auth/AuthContext';
 const Record = (lead) => {
 
     const checkBoxHandler = () =>{
-        console.log(lead);
+       
     }
+   
+    const { orgId } = useContext(AuthContext);
 
     return   <div className={styles.record}>
                 <div style={{minWidth:"3rem", position:"fixed", backgroundColor:"#fff", borderRight:"1px solid #a4a8b1"}} className={styles.column}>
                      <input type="checkbox" onClick={checkBoxHandler}/>
                 </div>
-                <Link className={styles.column} to={`/`}>
+                <Link className={styles.column} to={`/org/${orgId}/leads/${lead.lead.id}`}>
                 <div style={{marginLeft:"4rem"}} className={ styles.column}> {lead.lead.company|| "-"} </div> 
                 <div className={ styles.column }> { lead.lead.first_name|| "-" } </div> 
                 <div className={styles.column}> { lead.lead.last_name|| "-" } </div>

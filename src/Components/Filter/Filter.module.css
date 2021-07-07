@@ -85,6 +85,7 @@
     padding: .3rem;
     color: #fff;
     border-radius: 5px;
+    margin-left: .3rem;
 }
 .filterInput button:hover {
     background-color: #1049c4;

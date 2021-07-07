@@ -13,9 +13,9 @@ const LeadsContainer = ({ leadCols, isLoading }) => {
    const leads = useSelector((state)=> state.leads.leads);
 
     const is = ({name, value}, leads) => {
-        const lead = leads.filter((lead)=> lead[name] === value);
+        const leadRecs = leads.filter((lead)=> lead[name] === value);
             dispatch(leadActions.replaceLeads({
-                leads: lead
+                leads: leadRecs
             }));
     };
     const contains = () => {
@@ -27,7 +27,6 @@ const LeadsContainer = ({ leadCols, isLoading }) => {
 
 
     const filterLeads = (obj) => {
-        console.log(obj);
         const methodIndex = filterString.findIndex(filter => filter === obj.filterByMethod);
         const method = filterMethods[methodIndex];
         method(obj, leads)
