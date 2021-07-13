@@ -1,7 +1,15 @@
+import { Fragment } from "react";
+import ContactsContainer from "../Components/Contacts/ContactsContainer";
+import ModuleActions from "../Components/Leads/LeadsActions";
 
-const ContactsPage = () => {
-    return ""
+
+const ContactsModule = () => {
+    
+    return <Fragment>
+                    <ModuleActions module="Contacts" path="add-contact"/>
+                    <ContactsContainer contactCols={[]} contacts={[]}/>
+         </Fragment>
 
 }
 
-export default ContactsPage;
+export default ContactsModule;

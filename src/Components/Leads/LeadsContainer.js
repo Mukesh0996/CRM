@@ -8,15 +8,15 @@ import styles from './LeadsContainer.module.css';
 
 
 const LeadsContainer = ({ leadCols, isLoading }) => {
-   const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
 
-   const leads = useSelector((state)=> state.leads.leads);
+    const { leads, filterApplied, filteredLeads } = useSelector((state) => state.leads);
 
-    const is = ({name, value}, leads) => {
-        const leadRecs = leads.filter((lead)=> lead[name] === value);
-            dispatch(leadActions.replaceLeads({
-                leads: leadRecs
-            }));
+    const is = ({ name, value }, leads) => {
+        const leadRecs = leads.filter((lead) => lead[name] === value);
+        dispatch(leadActions.addFilteredLeads({
+            filteredLeads: leadRecs
+        }));
     };
     const contains = () => {
 
@@ -24,7 +24,6 @@ const LeadsContainer = ({ leadCols, isLoading }) => {
 
     const [filterMethods, setFilterMethods] = useState([is, contains]);
     const [filterString, setFilterString] = useState(["is", "contains"]);
-
 
     const filterLeads = (obj) => {
         const methodIndex = filterString.findIndex(filter => filter === obj.filterByMethod);
@@ -41,15 +40,17 @@ const LeadsContainer = ({ leadCols, isLoading }) => {
     </React.Fragment>;
 
     return (<section className={styles.leadsContainer}>
-                {isLoading && <LoadingPage />}
-                <Filter leadsCols={leadCols} filter={filterLeads}/>
-                <section className={styles.leadsrecords}>
-                    <div className={styles["lead-columns"]}>
-                        {columns}
-                    </div>
-                    {leads.map(lead => <Record lead={lead} key={lead.id} />)}
-                </section>
-            </section>);
+        {isLoading && <LoadingPage />}
+        <Filter leadsCols={leadCols} filter={filterLeads} module="leads" />
+        <section className={styles.leadsrecords}>
+            <div className={styles["lead-columns"]}>
+                {columns}
+            </div>
+            {filterApplied && filteredLeads.length === 0 && <div style={{ height: "100%", backgroundColor: "#fff", display: "flex", justifyContent: "center", alignItems: "center" }}><p>No Leads present for the specified criteria. Please refresh the page.</p></div>}
+            {!!leads && filteredLeads.length === 0 && !filterApplied && leads.map(lead => <Record lead={lead} key={lead.id} />)}
+            {filterApplied && filteredLeads.length !== 0 && filteredLeads.map(lead => <Record lead={lead} key={lead.id} />)}
+        </section>
+    </section>);
 }
 
 export default LeadsContainer

@@ -1,0 +1,19 @@
+.contactsContainer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+ }
+ .contactsRecords {
+    width: 82rem;
+    height: 81vh;
+    overflow: auto;
+    background: #fff;
+    margin: 1rem 0;
+    border-radius: 10px;
+    position: relative;
+}
+
+.contactsRecords::-webkit-scrollbar {
+    display: none;
+}
+ 

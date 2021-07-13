@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router';
-import useForm from '../../Hooks/Leads/useForm';
+import useForm from '../../Hooks/useForm';
 import styles from './AddLead.module.css';
 import LoadingPage from '../../Pages/loadingPage';
 import Input from '../Input/Input';
 import useHttp from '../../Hooks/httpHook';
 import AuthContext from '../../Store/Auth/AuthContext';
 import { addLeadRecord, getLeadsFields } from '../../Store/Leads/leads-actions';
+import FormActions from '../FormActions/FormActions';
 
 
 const AddLead = () => {
@@ -55,20 +56,14 @@ const AddLead = () => {
 
         Object.values(address).map(leadAddress =>  leadObj = { ...leadObj, [leadAddress.name] : leadAddress.value });
         Object.values(information).map(leadInfo => leadObj = { ...leadObj, [leadInfo.name]: leadInfo.value });
+        console.log(leadObj);
         addRecord(leadObj);
     }
 
     return (
             <form className={styles.form} autoComplete="none">
                 {isLoading && <LoadingPage/>}
-                <div className={styles.formActions}>
-                    <h2>Create Lead</h2>
-                    <div>
-                        <button className={styles.alt} onClick={onCancelHandler}>Cancel</button>
-                        <button className={styles.alt}>Save and New</button>
-                        <button type="submit" className={styles.save} onClick={saveHandler}>Save</button>
-                    </div> 
-                </div>
+                <FormActions saveHandler={saveHandler} cancelHandler={onCancelHandler}/>
                 <div className={styles.formfields}>
                         {informationFields}
                         {addressFields}

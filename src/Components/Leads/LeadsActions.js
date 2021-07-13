@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import styles from './LeadsActions.module.css';
 
-const LeadActions = () => {
+const ModuleActions = (props) => {
     const [showOtherActions, setShowOtherActions] = useState(false);
     const match = useRouteMatch();
     const showActionHandler = () => {
@@ -12,10 +12,10 @@ const LeadActions = () => {
     return (
         <div className={styles["lead-actions"]}>
             <div>
-                <h2>Leads</h2>
+                <h2>{props.module}</h2>
             </div>
             <div className={styles.actions}>
-                <Link className={styles.btn} to={`${match.url}/add-lead`}>Add Lead<div></div></Link>
+                <Link className={styles.btn} to={`${match.url}/${props.path}`}>Add {props.module}<div></div></Link>
                 <div className={styles.additional}>
                 <button className={`${styles["btn"]} ${styles["btn-alt"]}`} onClick={showActionHandler}>Actions</button>
                     { showOtherActions && <div className={styles["other-actions"]}>
@@ -32,4 +32,4 @@ const LeadActions = () => {
 
 }
 
-export default LeadActions;
+export default ModuleActions;

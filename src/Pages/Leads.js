@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Fragment, useEffect } from "react"
 import { useSelector } from "react-redux";
-import LeadActions from '../Components/Leads/LeadsActions';
+import ModuleActions from "../Components/Leads/LeadsActions";
 import LeadsContainer from "../Components/Leads/LeadsContainer";
 import useHttp from "../Hooks/httpHook";
 import AuthContext from "../Store/Auth/AuthContext";
@@ -12,6 +12,7 @@ const LeadsModule = () => {
 
     const { sendRequest: getLeads, isLoading, error } = useHttp(getAllLeads, true);
     const {sendRequest : getLeadColumns, isLoading: loadingColumns} = useHttp(getColumns, true);
+
     useEffect(() => {
        getLeads(ctx.orgId);
        getLeadColumns(ctx.orgId);
@@ -22,10 +23,10 @@ const LeadsModule = () => {
     const leads = useSelector(state => state.leads.leads);
 
    
-    return <Fragment> 
-                <LeadActions/>
-                <LeadsContainer leadCols={ leadColumns || [] } leads={ leads|| [] } isLoading={isLoading && loadingColumns}/>
-            </Fragment>
+    return <div> 
+                <ModuleActions path="add-lead" module="Leads"/>
+                <LeadsContainer leadCols={ leadColumns || [] } leads={ leads|| [] } isLoading={isLoading || loadingColumns}/>
+            </div>
 }
 
 export default LeadsModule;

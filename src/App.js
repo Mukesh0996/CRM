@@ -1,7 +1,7 @@
 import { Fragment, useContext } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Contacts from './Pages/Contacts';
+import ContactsModule from './Pages/Contacts';
 import Home from './Pages/Home';
 import LeadsModule from './Pages/Leads';
 import SignIn from './Pages/Signin';
@@ -23,8 +23,8 @@ function App() {
           </Route>
           <Route path="/org/:orgId/home"> { isLoggedIn ? <Home/> : <Redirect to={"/"}/>}</Route>
           <Route path="/org/:orgId/leads" exact> { isLoggedIn ? <LeadsModule/> : <Redirect to={`/`}/> }</Route>
-          <Route path="/org/:orgId/leads/add-lead" exact>{ isLoggedIn ? <AddLead/> : <Redirect to={"/"}/> } </Route>
-          <Route path="/org/:orgId/contacts"> { isLoggedIn ? <Contacts/> : <Redirect to={"/"}/> } </Route>
+          <Route path="/org/:orgId/leads/add-lead" exact>{ isLoggedIn ? <AddLead /> : <Redirect to={"/"}/> } </Route>
+          <Route path="/org/:orgId/contacts"> { isLoggedIn ? <ContactsModule/> : <Redirect to={"/"}/> } </Route>
           { <Route path="*" render={()=> <Redirect to="/"/>}/> }
         </Switch>
       </Fragment>

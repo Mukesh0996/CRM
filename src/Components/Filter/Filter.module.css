@@ -1,6 +1,7 @@
 
 .filterSection {
-    width: 20rem;
+    width: 18rem;
+    min-width: 16rem;
     margin: 1rem 0.7rem;
     padding: 5px;
     height: 81vh;
@@ -8,7 +9,7 @@
     border-radius: 10px;
     overflow: auto;
 }
- p {
+ .filterSection p {
     padding: 0.5rem 0.5rem;
     color: #6B7280;
     font-weight: bold;
@@ -27,10 +28,7 @@
     font-size: 13px;
     padding-left: 2rem;
 }
-.filter {
-    display: flex;
-    flex-direction: column;
-}
+
 .filterCriteria {
     margin-left: 2rem;
     max-width: 8.5rem;
@@ -82,7 +80,7 @@
     background: #2563EB;
     outline: none;
     border: 1px solid #2563EB;
-    padding: .3rem;
+    padding: .3rem .8rem;
     color: #fff;
     border-radius: 5px;
     margin-left: .3rem;

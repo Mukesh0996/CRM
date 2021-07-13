@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './Filter.module.css';
 
-const Filter = ({ leadsCols, filter }) => {
+const Filter = ({ leadsCols, filter, module }) => {
 
     const [showFilter, setShowFilter] = useState(false);
     const [filterValue, setFilterValue] = useState("");
@@ -19,18 +19,23 @@ const Filter = ({ leadsCols, filter }) => {
         const { name, value} = filterRef.current;
         filter({name, value, filterByMethod});
     }
+    const hideFilter = () => {
+        if(showFilterMethods) {
+            setShowFilterMethod(false);
+        }
+    }
 
     const filterMethodsElements = filterMethods.map( (method, index) => <li onClick={() => { setFilterByMethod(method) }} key={index}>{method}</li> );
     
     return (
-        <section className={styles.filterSection}>
-            <p>Filter leads By:</p>
-            { leadsCols.map((col, index) => <div key={index} className={styles.filter}> <div  className={styles.filterOptions}>
+        <section className={styles.filterSection} onClick={hideFilter}>
+            <p>Filter {module} By:</p>
+            { leadsCols.map((col, index) => <div key={index} className="filterby"> <div  className={styles.filterOptions}>
                 <input type="checkbox" onClick={() => { createFilterCriteria(col.label) }} />
                 <p className={styles.lighter}>{col.label}</p>
             </div>
                 { showFilter && filterValue === col.label.toLowerCase().split(" ").join("_") && <div onClick={() => { setShowFilterMethod(prevState => !prevState) }} className={styles.filterCriteria}>
-                    { filterByMethod || <span style={{fontWeight:"lighter"}}>Select Filter</span> } {showFilterMethods && <ul className={styles.filterMethods}> { filterMethodsElements } </ul>}
+                    { filterByMethod || <span style={{fontWeight:"lighter"}}>Select Filter</span> } { showFilterMethods && <ul className={styles.filterMethods}> { filterMethodsElements } </ul>}
                 </div> }
                 { showFilter && filterValue === col.label.toLowerCase().split(" ").join("_") && <div className={styles.filterInput}> 
                     <input ref={filterRef} style={{ minWidth: "4rem" }} name={filterValue} type="text"  /> 
