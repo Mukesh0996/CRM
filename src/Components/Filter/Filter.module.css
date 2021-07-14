@@ -59,6 +59,8 @@
 .filterMethods li {
     padding: 8px 10px;
     cursor: pointer;
+    font-weight: lighter;
+    color: black;
     
 }
 

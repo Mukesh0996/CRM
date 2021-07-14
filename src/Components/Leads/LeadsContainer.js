@@ -7,11 +7,11 @@ import Record from '../Record/Record';
 import styles from './LeadsContainer.module.css';
 
 
-const LeadsContainer = ({ leadCols, isLoading }) => {
+const LeadsContainer = ({ leadCols, isLoading , filterCols}) => {
     const dispatch = useDispatch();
 
     const { leads, filterApplied, filteredLeads } = useSelector((state) => state.leads);
-
+   
     const is = ({ name, value }, leads) => {
         const leadRecs = leads.filter((lead) => lead[name] === value);
         dispatch(leadActions.addFilteredLeads({
@@ -26,12 +26,13 @@ const LeadsContainer = ({ leadCols, isLoading }) => {
     const [filterString, setFilterString] = useState(["is", "contains"]);
 
     const filterLeads = (obj) => {
+        console.log(obj);
         const methodIndex = filterString.findIndex(filter => filter === obj.filterByMethod);
         const method = filterMethods[methodIndex];
         method(obj, leads)
     }
 
-
+    console.log(leads);
     let columns = <React.Fragment>
         <div style={{ minWidth: "3rem", position: "fixed", backgroundColor: "#fff", borderRadius: "10px 0 0 0" }} className={styles.column}>
             <input type="checkbox" />
@@ -41,7 +42,7 @@ const LeadsContainer = ({ leadCols, isLoading }) => {
 
     return (<section className={styles.leadsContainer}>
         {isLoading && <LoadingPage />}
-        <Filter leadsCols={leadCols} filter={filterLeads} module="leads" />
+        <Filter leadsCols={filterCols} filter={filterLeads} module="leads" />
         <section className={styles.leadsrecords}>
             <div className={styles["lead-columns"]}>
                 {columns}

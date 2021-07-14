@@ -17,13 +17,12 @@ export const getLeadsFields = async (orgId, token) => {
         error.value = responseData.value || "";
         throw(error);
     }
-   
     return responseData;
 }
 
-export const getColumns = (orgId, token) => {
+export const getFilterColumns = (orgId, token) => {
     return async (dispatch) => {
-        const response = await fetch(`${url}/org/${orgId}/leads/getcolumns`,{
+        const response = await fetch(`${url}/org/${orgId}/leads/getfilterColumns`,{
             method:"GET",
             headers : {
                 "Content-Type":"application/json",
@@ -31,14 +30,15 @@ export const getColumns = (orgId, token) => {
             }
         })
         const responseData = await response.json();
+
         if(!response.ok) {
             let error = new Error(responseData.message || "Error Occured!")
             error.isValid = responseData.isValid || false;
             error.value = responseData.value || "";
             throw(error);
         }
-        dispatch(leadActions.addColumns({
-            columns: responseData.data
+        dispatch(leadActions.addFilterColumns({
+            filterColumns: responseData.data
         }))
        
     }
@@ -59,11 +59,11 @@ export const getAllLeads = (orgId, token) => {
             let error = new Error(responseData.message || "Error Occured!")
             error.isValid = responseData.isValid || false;
             error.value = responseData.value || "";
-            console.log(error);
             throw(error);
         }
         dispatch(leadActions.replaceLeads({
-            leads: responseData.data,
+            leads: responseData.data.leads,
+            cols: responseData.data.leadCols,
             canCreate : true,
             canEdit: true
         }))
@@ -93,10 +93,9 @@ export const addLeadRecord = (data, token) => {
         error.value = responseData.value || "";
         throw(error);
     }
-
+    console.log(responseData);
     dispatch(leadActions.addLead({
         lead: responseData.data
     }));
-
     }
 }
