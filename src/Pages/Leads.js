@@ -12,6 +12,7 @@ const LeadsModule = () => {
 
     const { sendRequest: getLeads, isLoading, error: getLeadsError } = useHttp(getAllLeads, true);
     const {sendRequest: fetchFilerColumns, isLoading: FilterLoading, error: filterError} = useHttp(getFilterColumns, true);
+    const { filterColumns, leads, columns } = useSelector(state => state.leads);
 
     useEffect(() => {
        getLeads(ctx.orgId);
@@ -19,9 +20,12 @@ const LeadsModule = () => {
       
     },[ctx.orgId]);
 
-   
-    const { filterColumns, leads, columns } = useSelector(state => state.leads);
-
+    if(getLeadsError.isValid || filterError.isValid) {
+        return <div style={{height:"93vh", backgroundColor:"white", color:"red", fontWeight:"bold", display:"flex", alignItems:"center", justifyContent:"center"}}>
+        { getLeadsError && filterError && <p>{getLeadsError.message}</p>}
+        <button>Please Re-Login</button>
+        </div>
+    }
 
     return <div> 
                 <ModuleActions path="add-lead" module="Leads"/>

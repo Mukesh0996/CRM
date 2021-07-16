@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router';
 import useForm from '../../Hooks/useForm';
 import styles from './AddLead.module.css';
 import LoadingPage from '../../Pages/loadingPage';
@@ -17,12 +16,7 @@ const AddLead = () => {
     const [description, setDescription] = useState("");
     const ctx = useContext(AuthContext);
     let informationFields, addressFields;
-    const history = useHistory();
 
-    const onCancelHandler = (event) => {
-        event.preventDefault();
-        history.goBack(-1);
-    }
     if(address) {
          addressFields = <React.Fragment>
                             <h3>Address Information</h3>
@@ -56,14 +50,13 @@ const AddLead = () => {
 
         Object.values(address).map(leadAddress =>  leadObj = { ...leadObj, [leadAddress.name] : leadAddress.value });
         Object.values(information).map(leadInfo => leadObj = { ...leadObj, [leadInfo.name]: leadInfo.value });
-        console.log(leadObj);
         addRecord(leadObj);
     }
 
     return (
             <form className={styles.form} autoComplete="none">
-                {isLoading && <LoadingPage/>}
-                <FormActions saveHandler={saveHandler} cancelHandler={onCancelHandler}/>
+                { isLoading && <LoadingPage/> }
+                <FormActions saveHandler={saveHandler}/>
                 <div className={styles.formfields}>
                         {informationFields}
                         {addressFields}

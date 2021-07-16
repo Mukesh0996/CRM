@@ -4,7 +4,8 @@ import ModuleActions from "../Components/Leads/LeadsActions";
 
 
 const ContactsModule = () => {
-    
+
+
     return <Fragment>
                     <ModuleActions module="Contacts" path="add-contact"/>
                     <ContactsContainer contactCols={[]} contacts={[]}/>

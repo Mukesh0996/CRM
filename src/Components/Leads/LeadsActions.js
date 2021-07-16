@@ -11,7 +11,7 @@ const ModuleActions = (props) => {
     
     return (
         <div className={styles["lead-actions"]}>
-            <div>
+            <div style={{marginLeft:"1.5rem"}}>
                 <h2>{props.module}</h2>
             </div>
             <div className={styles.actions}>

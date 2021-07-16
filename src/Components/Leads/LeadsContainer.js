@@ -26,13 +26,11 @@ const LeadsContainer = ({ leadCols, isLoading , filterCols}) => {
     const [filterString, setFilterString] = useState(["is", "contains"]);
 
     const filterLeads = (obj) => {
-        console.log(obj);
         const methodIndex = filterString.findIndex(filter => filter === obj.filterByMethod);
         const method = filterMethods[methodIndex];
         method(obj, leads)
     }
 
-    console.log(leads);
     let columns = <React.Fragment>
         <div style={{ minWidth: "3rem", position: "fixed", backgroundColor: "#fff", borderRadius: "10px 0 0 0" }} className={styles.column}>
             <input type="checkbox" />
