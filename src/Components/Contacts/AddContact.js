@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import useForm from '../../Hooks/useForm';
 import LoadingPage from '../../Pages/loadingPage';
 import { getContactsFields } from '../../Store/Contacts/contacts-actions';
@@ -12,7 +13,15 @@ const AddContact = () => {
     const saveHandler = (event) => {
         event.preventDefault();
     };
-
+    const userInfo = {
+        _id: "s",
+        hello:"one"
+    }
+    useEffect(() => {
+        if(userInfo) {
+            console.log("executing")
+        }
+    }, [userInfo])
 
     return <form className={styles.form} autoComplete="none">
                { isLoading && <LoadingPage/>}

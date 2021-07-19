@@ -9,6 +9,7 @@ html {
     height: auto;
     background-color: white;
     text-align: right;
+    z-index: 100;
 }
 
 .signup button  {
