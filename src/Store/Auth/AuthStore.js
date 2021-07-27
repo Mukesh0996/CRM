@@ -13,7 +13,7 @@ export const AuthContextProvider = (props) => {
 
     const signInHandler = ({token, userId, orgId}) => {
         const currentTime = new Date().getTime();
-        const expiryTime = currentTime + 10000;
+        const expiryTime = currentTime + 100000;
         
         setToken(token);
         setUserId(userId);

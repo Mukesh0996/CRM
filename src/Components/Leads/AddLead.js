@@ -13,6 +13,7 @@ const AddLead = () => {
     //custom hooks
     const { inputHandler, address, information, isLoading } = useForm(getLeadsFields);
     const { sendRequest: addRecord, error } = useHttp( addLeadRecord, true);
+    
     const [description, setDescription] = useState("");
     const ctx = useContext(AuthContext);
     let informationFields, addressFields;

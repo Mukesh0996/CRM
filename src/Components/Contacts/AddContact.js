@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import useForm from '../../Hooks/useForm';
 import LoadingPage from '../../Pages/loadingPage';
 import { getContactsFields } from '../../Store/Contacts/contacts-actions';
@@ -8,20 +7,11 @@ import styles from './AddContact.module.css';
 
 const AddContact = () => {
 
-    const {isLoading, httpError, information, address, inputHandler} = useForm(getContactsFields, false);
+    const {isLoading, information, address, inputHandler} = useForm(getContactsFields, false);
   
     const saveHandler = (event) => {
         event.preventDefault();
     };
-    const userInfo = {
-        _id: "s",
-        hello:"one"
-    }
-    useEffect(() => {
-        if(userInfo) {
-            console.log("executing")
-        }
-    }, [userInfo])
 
     return <form className={styles.form} autoComplete="none">
                { isLoading && <LoadingPage/>}
