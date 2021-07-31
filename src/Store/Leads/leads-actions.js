@@ -93,7 +93,6 @@ export const addLeadRecord = (data, token) => {
         error.value = responseData.value || "";
         throw(error);
     }
-    console.log(responseData);
     dispatch(leadActions.addLead({
         lead: responseData.data
     }));

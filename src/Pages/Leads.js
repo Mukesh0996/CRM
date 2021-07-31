@@ -12,6 +12,7 @@ const LeadsModule = () => {
 
     const { sendRequest: getLeads, isLoading, error: getLeadsError } = useHttp(getAllLeads, true);
     const {sendRequest: fetchFilerColumns, isLoading: FilterLoading, error: filterError} = useHttp(getFilterColumns, true);
+    
     const { filterColumns, leads, columns } = useSelector(state => state.leads);
 
     useEffect(() => {

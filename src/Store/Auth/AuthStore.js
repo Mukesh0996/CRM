@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import AuthContext from './AuthContext';
 
 
@@ -9,11 +8,19 @@ export const AuthContextProvider = (props) => {
     const [orgId, setOrgId] = useState(localStorage.getItem("orgId"));
     const [iat, setIat] = useState(localStorage.getItem("iat"));
     const [expAt, setExpAt] = useState(localStorage.getItem("expAt"));
-    const history = useHistory();
+
+    const signOutHandler = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("orgId");
+        localStorage.removeItem("expAt");
+        localStorage.removeItem("iat");
+      
+    }
 
     const signInHandler = ({token, userId, orgId}) => {
         const currentTime = new Date().getTime();
-        const expiryTime = currentTime + 100000;
+        const expiryTime = currentTime + 60000;
         
         setToken(token);
         setUserId(userId);
@@ -27,23 +34,20 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem("iat", currentTime);
         localStorage.setItem("expAt", expiryTime);
         
-        
     }
-    const signOutHandler = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("orgId");
-        localStorage.removeItem("expAt");
-        localStorage.removeItem("iat");
-       window.history(null,"","/");
+
+    if(new Date().getTime() > expAt) {
+        signOutHandler();
+    }
+     else if(new Date().getTime() > iat && new Date().getTime() < expAt) {
+        localStorage.setItem("iat", new Date().getTime())
+        setIat(new Date().getTime());
     }
 
     useEffect(() => {
-       
         if(iat && expAt) {
             setTimeout(signOutHandler, localStorage.getItem("expAt") - localStorage.getItem("iat"));
         }
-
     },[iat, expAt])
 
    

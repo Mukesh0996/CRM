@@ -13,13 +13,10 @@ const useForm = (requestFn) => {
             setFormObj(data);
         })
     },[]);
-    console.log(formObj);
   const inputHandler = useCallback((event, section) => {
    
      const { name, value } = event.target;
-     console.log(name, value);
      const newFormObj = {...formObj};
-     console.log(newFormObj[section]);
      newFormObj[section][name].value = value;
      setFormObj({...newFormObj});
 
