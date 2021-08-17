@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 
 import ContactsModule from './Pages/Contacts';
 import Home from './Pages/Home';
@@ -10,6 +10,7 @@ import Header from './Components/Header/Header';
 import AddLead from './Components/Leads/AddLead';
 import AuthContext from './Store/Auth/AuthContext';
 import AddContact from './Components/Contacts/AddContact';
+
 
 
 function App() {

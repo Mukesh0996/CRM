@@ -15,12 +15,12 @@ export const AuthContextProvider = (props) => {
         localStorage.removeItem("orgId");
         localStorage.removeItem("expAt");
         localStorage.removeItem("iat");
-      
+        
     }
 
     const signInHandler = ({token, userId, orgId}) => {
         const currentTime = new Date().getTime();
-        const expiryTime = currentTime + 60000;
+        const expiryTime = currentTime + 86400000;
         
         setToken(token);
         setUserId(userId);
@@ -36,17 +36,18 @@ export const AuthContextProvider = (props) => {
         
     }
 
-    if(new Date().getTime() > expAt) {
+    if(new Date().getTime() > Number(expAt) && Number(expAt) !== 0) {
         signOutHandler();
     }
+
      else if(new Date().getTime() > iat && new Date().getTime() < expAt) {
-        localStorage.setItem("iat", new Date().getTime())
+        localStorage.setItem("iat", new Date().getTime());
         setIat(new Date().getTime());
     }
 
     useEffect(() => {
         if(iat && expAt) {
-            setTimeout(signOutHandler, localStorage.getItem("expAt") - localStorage.getItem("iat"));
+            setTimeout(signOutHandler, Number(expAt) - Number(iat));
         }
     },[iat, expAt])
 
