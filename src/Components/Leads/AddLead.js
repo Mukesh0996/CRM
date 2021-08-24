@@ -10,6 +10,7 @@ import FormActions from '../FormActions/FormActions';
 
 
 const AddLead = () => {
+    
     //custom hooks
     const { inputHandler, address, information, isLoading } = useForm(getLeadsFields);
     const { sendRequest: addRecord, error } = useHttp( addLeadRecord, true);

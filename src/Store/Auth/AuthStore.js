@@ -3,6 +3,7 @@ import AuthContext from './AuthContext';
 
 
 export const AuthContextProvider = (props) => {
+    
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
     const [orgId, setOrgId] = useState(localStorage.getItem("orgId"));
@@ -15,7 +16,6 @@ export const AuthContextProvider = (props) => {
         localStorage.removeItem("orgId");
         localStorage.removeItem("expAt");
         localStorage.removeItem("iat");
-        
     }
 
     const signInHandler = ({token, userId, orgId}) => {
@@ -50,10 +50,8 @@ export const AuthContextProvider = (props) => {
             setTimeout(signOutHandler, Number(expAt) - Number(iat));
         }
     },[iat, expAt])
-
-   
-
     const isLoggedIn = !!token && !!userId && !!orgId;
+
     const authContext = {
         isLoggedIn,
         token,
@@ -62,6 +60,6 @@ export const AuthContextProvider = (props) => {
         signIn: signInHandler,
         signOut: signOutHandler 
     }
-    return <AuthContext.Provider value={authContext}>{props.children}</AuthContext.Provider>
 
+    return <AuthContext.Provider value={authContext}>{props.children}</AuthContext.Provider>
 }
