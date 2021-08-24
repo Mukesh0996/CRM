@@ -10,7 +10,7 @@ import FormActions from '../FormActions/FormActions';
 
 
 const AddLead = () => {
-    
+
     //custom hooks
     const { inputHandler, address, information, isLoading } = useForm(getLeadsFields);
     const { sendRequest: addRecord, error } = useHttp( addLeadRecord, true);
@@ -52,7 +52,9 @@ const AddLead = () => {
 
         Object.values(address).map(leadAddress =>  leadObj = { ...leadObj, [leadAddress.name] : leadAddress.value });
         Object.values(information).map(leadInfo => leadObj = { ...leadObj, [leadInfo.name]: leadInfo.value });
-        addRecord(leadObj);
+        addRecord(leadObj, ()=> {
+            console.log("re directing");
+        });
     }
 
     return (

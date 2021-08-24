@@ -1,5 +1,5 @@
 import { Fragment, useContext } from 'react';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import ContactsModule from './Pages/Contacts';
 import Home from './Pages/Home';

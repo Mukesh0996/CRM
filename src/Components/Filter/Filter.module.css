@@ -11,8 +11,8 @@
 }
  .filterSection p {
     padding: 0.5rem 0.5rem;
-    color: #6B7280;
-    font-weight: bold;
+    color: #313949;
+    font-size: 15px;
 }
 .filterOptions {
     display: flex;

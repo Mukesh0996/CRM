@@ -18,7 +18,6 @@ const LeadsModule = () => {
     useEffect(() => {
        getLeads(ctx.orgId);
        fetchFilerColumns(ctx.orgId);
-      
     },[ctx.orgId]);
 
     if(getLeadsError.isValid || filterError.isValid) {

@@ -1,6 +1,6 @@
 .record {
     display: flex;
-    min-width: 345rem;
+    min-width: 112rem;
     border-bottom: 1px solid #E5E7EB;
 }
 .column {
@@ -9,8 +9,7 @@
     min-height: 2.5rem;
     align-items: center;
     padding: 0 1rem;
-    color: #6B7280;
+    color: #313949;;
     text-align: left;
-    font-weight: bold;
     font-size: 15px;
 }
