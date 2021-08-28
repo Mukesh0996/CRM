@@ -35,7 +35,7 @@ html {
 }
   
 .signinContainer {
-    padding: 1rem;
+   
     border: 1px solid whitesmoke;
     background: white;
     border-radius: 2px;
@@ -120,7 +120,7 @@ html {
         margin-right: auto;
         display: flex;
         height: 100vh; 
-        padding: 1rem;   
+       
     }
     .rightContainer {
         display: none;
@@ -152,7 +152,8 @@ html {
         border-left: 1px solid rgb(189, 189, 189);
         height: 340px;
         align-items: center;
-       justify-content: center;
+       justify-content: center;   
+       height: 100%; 
     }
     .rightContainer img {
         width: 300px;
@@ -162,14 +163,19 @@ html {
 
 }
 
+
 @media (min-width: 56.25rem) {
     .signinContainer {
         width: 900px;
         margin: 0 auto;
-        margin-top: 15%;
-        padding: 0;
+        margin-top: 18%;
+       
     }
     .form {
         width: 500px;
     }
 }
+
+
+
+

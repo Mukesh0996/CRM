@@ -59,7 +59,6 @@ const SignIn = () => {
                         <div className={styles["form-control"]}>
                             <label htmlFor="password">Password</label>
                             <input type="password" id="password" onChange={passwordChangehandler} onBlur={passwordBlurHandler}/>
-                            { !passwordValid && passwordTouched && <p className={styles.error}>Please enter a valid email</p> }
                             { !error.isValid && error.value==="password" && <p className={styles.error}>{error.message}</p> }
                         </div>
                         <button className={styles.submitBtn}>Sign In</button>
