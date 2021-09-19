@@ -4,8 +4,9 @@
    position: relative;
 }
 
+
 .leadsrecords {
-    width: 82rem;
+    width: 89rem;
     height: 81vh;
     overflow: auto;
     background: #fff;
@@ -20,7 +21,7 @@
 .lead-columns {
     display: flex;
     min-width: 112rem;
-    box-shadow: 1px 0 5px #ccc;
+    border-bottom: 1px solid #E5E7EB;
 }
 
 
@@ -37,15 +38,12 @@ input[type="checkbox"] {
     padding: 0 1rem;
     color: #313949;
     font-weight: bold;
-    border-right: 1px solid #a4a8b1;
     text-align: left;
 }
 .column:nth-child(2) {
     margin-left: 4rem;
 }
-.column:nth-child(1){
-    border-bottom: 1px solid #E5E7EB;
-}
+
 .record {
     display: flex;
     min-width: 11rem;

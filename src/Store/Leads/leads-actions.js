@@ -11,12 +11,14 @@ export const getLeadsFields = async (orgId, token) => {
         }
     });
     const responseData = await response.json();
+
     if(!response.ok) {
         let error = new Error(responseData.message || "Error Occured!")
         error.isValid = responseData.isValid || false;
         error.value = responseData.value || "";
         throw(error);
     }
+    // responseData will be destructed in the respective component
     return responseData;
 }
 
@@ -96,5 +98,20 @@ export const addLeadRecord = (data, token) => {
     dispatch(leadActions.addLead({
         lead: responseData.data
     }));
+    return responseData.data;
     }
+}
+
+export const getSingleLeadRecord = async () => {
+    const response = await fetch();
+    const responseData = await response.json();
+    if(!response) {
+        let error = new Error(responseData.message);
+        error.isValid = responseData.isValid || false;
+        error.value = responseData.value || "";
+        throw(error);
+    }
+
+    return responseData;
+
 }

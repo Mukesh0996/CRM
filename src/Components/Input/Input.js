@@ -1,5 +1,5 @@
 import styles from './Input.module.css';
-
+import React from 'react';
 const Input = ({label, value, type , name, handleChange, section, error}) => {
 
     return <div className={`${styles.formControl} ${error && error.value === name ? styles.error: ""}`}>
@@ -9,4 +9,4 @@ const Input = ({label, value, type , name, handleChange, section, error}) => {
             </div>            
 };
 
-export default Input;
+export default React.memo(Input);

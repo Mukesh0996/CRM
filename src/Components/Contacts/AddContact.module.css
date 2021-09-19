@@ -1,22 +1,14 @@
 body {
-    height: 100vh;
+    min-height: 100vh;
     overflow: auto;
     overflow-x: hidden;
+    background: white;
 }
-.form {
+.addContactForm {
     background-color: white;
     position: relative;    
 }
-.formActions {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 5px 0 5px #ccc;
-    z-index: 10;
-    background-color: white;
-}
+
 .formActions h2 {
     margin: 1rem;
     margin-left: 3rem;
@@ -62,7 +54,7 @@ body {
     min-height: 83vh;
 }
 
-h3 {
+.formSection {
     color: #374151;
     margin: 2rem 0;
 }
@@ -82,6 +74,18 @@ h3 {
     font: inherit;
     width: 40rem;
     margin-bottom: 2rem;
+}
+
+.address {
+    display: flex;
+}
+
+.address div {
+    width: 95%;
+}
+.address div div {
+    margin-right: 0;
+    margin-left: 0;
 }
 
 @media (max-width: 40rem) {
@@ -118,6 +122,9 @@ h3 {
    .inp {
        margin: 1rem;
        margin-bottom: 0rem;
+   }
+   .formSection {
+       margin-left: 1.5rem;
    }
    
 }

@@ -1,8 +1,4 @@
-body {
-    height: 100vh;
-    overflow: auto;
-    overflow-x: hidden;
-}
+
 .form {
     background-color: white;
     position: relative;    

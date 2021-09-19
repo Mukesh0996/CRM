@@ -17,11 +17,11 @@ const useHttp = (requestFn, dispatcherIsTrue) => {
 
             if(dispatcherIsTrue) {
                responseData =  await dispatch(requestFn(orgId, ctx.token));
-                sendData(responseData);
+            //    console.log("response data is", responseData); need to check later
+            //     sendData(responseData);
             } else {
-
                 responseData = await requestFn(orgId, ctx.token);
-                sendData(responseData); 
+                sendData(responseData);  //transports the data from the server to the respective function component
 
             }   
 

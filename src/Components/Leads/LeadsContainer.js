@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingPage from '../../Pages/loadingPage';
 import { leadActions } from '../../Store/Leads/leads-slice';
@@ -10,13 +10,12 @@ import styles from './LeadsContainer.module.css';
 const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
     const dispatch = useDispatch();
     const { leads, filterApplied, filteredLeads } = useSelector((state) => state.leads);
-
+    
     const is = ({ name, value }, leads) => {
         const leadRecs = leads.filter((lead) => lead[name] === value);
-        dispatch(leadActions.addFilteredLeads({
-            filteredLeads: leadRecs
-        }));
+        dispatch(leadActions.addFilteredLeads({filteredLeads: leadRecs}));
     };
+
     const contains = () => { };
 
     const [filterMethods] = useState([is, contains]);
@@ -32,10 +31,10 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
         <div style={{ minWidth: "3rem", position: "fixed", backgroundColor: "#fff", borderRadius: "10px 0 0 0" }} className={styles.column}>
             <input type="checkbox" />
         </div>
-        {leadCols.map((key, index) => <div key={index} className={styles.column}>{key.label}</div>)}
+        { leadCols.map((key, index) => <div key={index} className={styles.column}>{key.label}</div>) }
     </React.Fragment>;
 
-    return (
+    return (<Fragment>
         <section className={styles.leadsContainer}>
             { isLoading && <LoadingPage /> }
             <Filter leadsCols={filterCols} filter={filterLeads} module="leads" />
@@ -45,8 +44,10 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
                 {!!leads && filteredLeads.length === 0 && !filterApplied && leads.map(lead => <Record lead={lead} key={lead.id} />)}
                 {filterApplied && filteredLeads.length !== 0 && filteredLeads.map(lead => <Record lead={lead} key={lead.id} />)}
             </section>
+            
         </section>
+        </Fragment>
     );
 }
 
-export default LeadsContainer
+export default LeadsContainer;

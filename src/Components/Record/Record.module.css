@@ -2,7 +2,25 @@
     display: flex;
     min-width: 112rem;
     border-bottom: 1px solid #E5E7EB;
+    position: relative;
+    background: white;
+    min-height: 2rem;
 }
+
+.record:hover {
+    background: #EFF6FF;
+}
+.checkbox {
+    display: flex;
+    background: white;
+    min-height: 2.5rem;
+    align-items: center;
+    padding: 0 1rem;
+}
+.record:hover .checkbox {
+    background: #EFF6FF;
+}
+
 .column {
     display: flex;
     min-width: 18rem;
