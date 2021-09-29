@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useForm from '../../Hooks/useForm';
 import styles from './AddLead.module.css';
 import LoadingPage from '../../Pages/loadingPage';
@@ -14,10 +14,11 @@ const AddLead = () => {
     //custom hooks
     const { inputHandler, address, information, isLoading } = useForm(getLeadsFields);
     const { sendRequest: addRecord, error } = useHttp( addLeadRecord, true);
-    
+  
     const [description, setDescription] = useState("");
     const ctx = useContext(AuthContext);
     let informationFields, addressFields;
+
 
     if(address) {
          addressFields = <React.Fragment>

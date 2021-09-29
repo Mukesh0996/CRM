@@ -1,0 +1,92 @@
+
+.singleRecord {
+    width: 100vw;
+    margin-top: 0rem;
+    min-height: 100vh;
+}
+
+.singleRecord-actions {
+    width: 100%;
+    height: 8vh;
+    background: white;
+    box-shadow: 5px 0 5px #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2.5rem;
+    border-bottom: 1px solid #dde4eb;
+}
+.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.back svg{
+    font-size: 25px;
+    color: lightslategrey;
+    margin: 0 1rem;
+}
+.back svg:hover {
+    cursor: pointer;
+    color: rgb(90, 106, 121);
+} 
+
+.action button {
+    padding: 6px 10px;
+    margin: 0 1rem;
+    background: white;
+    outline: none;
+    border-radius: 4px;
+
+}
+
+.convert {
+
+}
+
+.edit {
+
+}
+
+.clone {
+
+}
+.delete {
+
+}
+
+.values {
+    display: flex;
+    flex-direction: row;
+    background-color: #ebebeb;
+}
+
+.leftPane {
+    min-height: 85vh;
+    width: 30vh !important;
+    background: white;
+   
+}
+
+.rightPane {
+    padding: 1rem;
+    overflow: auto;
+
+}
+
+.top {
+    display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+    
+}
+
+
+.suitableTime {
+    margin: .5rem;
+    width: 400px;
+    height: 300px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #dde4eb;
+}

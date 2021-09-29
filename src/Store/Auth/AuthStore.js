@@ -49,7 +49,8 @@ export const AuthContextProvider = (props) => {
         if(iat && expAt) {
             setTimeout(signOutHandler, Number(expAt) - Number(iat));
         }
-    },[iat, expAt])
+    },[iat, expAt]);
+    
     const isLoggedIn = !!token && !!userId && !!orgId;
 
     const authContext = {

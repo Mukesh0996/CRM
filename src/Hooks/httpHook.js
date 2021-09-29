@@ -14,19 +14,13 @@ const useHttp = (requestFn, dispatcherIsTrue) => {
         setIsLoading(true);
         let responseData;
         try {
-
             if(dispatcherIsTrue) {
                responseData =  await dispatch(requestFn(orgId, ctx.token));
-            //    console.log("response data is", responseData); need to check later
-            //     sendData(responseData);
             } else {
                 responseData = await requestFn(orgId, ctx.token);
                 sendData(responseData);  //transports the data from the server to the respective function component
-
             }   
-
         } catch (error) {
-
             setIsLoading(false);
             setError({
                 isValid: error.isValid,

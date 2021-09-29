@@ -3,7 +3,7 @@ import { leadActions } from "./leads-slice";
 const url = "http://localhost:8080";
 
 export const getLeadsFields = async (orgId, token) => {
-    const response = await fetch(`${url}/org/${orgId}/leads/leadstable`,{
+    const response = await fetch(`${url}/leads/org/${orgId}/leadstable`,{
         method:"GET",
         headers : {
             "Content-Type":"application/json",
@@ -24,7 +24,7 @@ export const getLeadsFields = async (orgId, token) => {
 
 export const getFilterColumns = (orgId, token) => {
     return async (dispatch) => {
-        const response = await fetch(`${url}/org/${orgId}/leads/getfilterColumns`,{
+        const response = await fetch(`${url}/leads/org/${orgId}/getfilterColumns`,{
             method:"GET",
             headers : {
                 "Content-Type":"application/json",
@@ -49,7 +49,7 @@ export const getFilterColumns = (orgId, token) => {
 
 export const getAllLeads = (orgId, token) => {
     return async (dispatch) => {
-        const response = await fetch(`${url}/org/${orgId}/leads/getrecords`,{
+        const response = await fetch(`${url}/leads/org/${orgId}/getrecords`,{
             method:"GET",
             headers :{
                 "Content-Type": "application/json",
@@ -76,9 +76,8 @@ export const addLeadRecord = (data, token) => {
 
     return async (dispatch) => {
         const { orgId } = data;
-        delete data['orgId'];
         const leadObj = data;
-        const response = await fetch(`${url}/org/${orgId}/leads/addrecord`,{
+        const response = await fetch(`${url}/leads/org/${orgId}/addrecord`,{
         method:"POST",
         body: JSON.stringify(leadObj),
         headers :{
@@ -102,8 +101,16 @@ export const addLeadRecord = (data, token) => {
     }
 }
 
-export const getSingleLeadRecord = async () => {
-    const response = await fetch();
+export const getSingleLeadRecord = async (data, token) => {
+
+    const { orgId, leadId } = data;
+    const response = await fetch(`${url}/leads/org/${orgId}/lead/${leadId}`, {
+        method: "GET",
+        headers :{
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    });
     const responseData = await response.json();
     if(!response) {
         let error = new Error(responseData.message);
