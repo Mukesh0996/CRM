@@ -1,6 +1,6 @@
 import {  faBackward } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import useHttp from '../../Hooks/httpHook';
@@ -11,19 +11,28 @@ const ViewLead = () => {
 
     const params = useParams();
     const {orgId, leadId} = params;
-    const [lead, setLead] = useState({});
+    const [lead, setLead] = useState([]);
     const {sendRequest : fetchLeadRecord , isLoading, error} = useHttp(getSingleLeadRecord, false);
 
     useEffect(() => {
         fetchLeadRecord({orgId, leadId}, (leadRecord) => {
-                setLead(leadRecord);
+            setLead(leadRecord.record)
         });
         
     }, []);
     const navigateBackHandler = () => {
 
     }
-
+    let displayRecord;
+    if(lead) {
+        displayRecord =  Object.keys(lead).map((leadR, index) => {
+                    return <div className={styles.field} key={index}> 
+                                <div className={styles.label}>{ leadR }</div> 
+                                <div className={styles.value}>{ lead[leadR] || "-" }</div> 
+                            </div>
+                })
+       
+    }
 
 return <section className={styles.singleRecord}>
             <section className={styles["singleRecord-actions"]}>
@@ -39,9 +48,15 @@ return <section className={styles.singleRecord}>
                 </div>
             </section>
             <section className={styles.values}>
-                <section className={styles.leftPane}>Hello</section>
                 <section className={styles.rightPane}>
-                       <div className={styles.full}></div>
+                       <div className={styles.full}>
+                            <h1 className={styles.leadInfo}>Lead Information:</h1>
+                            <div className={styles.full}>  {displayRecord}</div>     
+                       </div>
+                       <div className={styles.notes}>
+                            <h1>Notes:</h1>
+                            <textarea></textarea>
+                       </div>
                 </section>
             </section>
 </section>
