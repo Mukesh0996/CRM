@@ -39,6 +39,9 @@
     border-radius: 4px;
 
 }
+.action button:hover {
+    cursor: pointer;
+}
 
 .convert {
 
@@ -52,7 +55,11 @@
 
 }
 .delete {
-
+    background: #F87171 !important;
+    outline: none;
+    border: 1px solid #F87171;
+    color: white;
+    font: inherit;
 }
 
 .values {
@@ -85,7 +92,7 @@
 
 .leadInfo {
     padding: 1rem;
-    color: #4f4d4d;
+    color: #1d1c1c;
     font-weight: bolder;
 
 }
@@ -93,7 +100,7 @@
 .field {
     display: flex;
     padding: 1rem .5rem;
-    color: #7e7c7c;
+    color: #373636;
 
 }
 .field .label {

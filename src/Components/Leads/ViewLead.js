@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import useHttp from '../../Hooks/httpHook';
+import LoadingTopBar from '../../Pages/LoadingTopBar';
 import { getSingleLeadRecord } from '../../Store/Leads/leads-actions';
 import styles from './ViewLead.module.css';
 
@@ -13,7 +14,7 @@ const ViewLead = () => {
     const {orgId, leadId} = params;
     const [lead, setLead] = useState([]);
     const {sendRequest : fetchLeadRecord , isLoading, error} = useHttp(getSingleLeadRecord, false);
-
+    console.log(isLoading);
     useEffect(() => {
         fetchLeadRecord({orgId, leadId}, (leadRecord) => {
             setLead(leadRecord.record)
@@ -35,6 +36,7 @@ const ViewLead = () => {
     }
 
 return <section className={styles.singleRecord}>
+            { isLoading && <LoadingTopBar/> }
             <section className={styles["singleRecord-actions"]}>
                 <div className={styles.back}>
                     <FontAwesomeIcon icon={faBackward} onClick={navigateBackHandler}/>

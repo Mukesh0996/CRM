@@ -1,0 +1,25 @@
+.top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    background: crimson;
+    z-index: 10000;
+    display: flex;
+}
+.top div {
+    height: 3px;
+    width: 10px;
+    background: white;
+    animation: loading 2s ease-in infinite;
+
+}
+
+@keyframes loading {
+    0% {
+            margin-left: 5rem;
+    }
+    100% {
+        margin-left: 90rem;
+    }
+}
