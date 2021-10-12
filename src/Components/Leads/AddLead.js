@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import useForm from '../../Hooks/useForm';
 import styles from './AddLead.module.css';
 import LoadingPage from '../../Pages/loadingPage';
@@ -50,7 +50,6 @@ const AddLead = () => {
     const saveHandler = (e) => {
         e.preventDefault();
         let leadObj = { description, orgId: ctx.orgId };
-
         Object.values(address).map(leadAddress =>  leadObj = { ...leadObj, [leadAddress.name] : leadAddress.value });
         Object.values(information).map(leadInfo => leadObj = { ...leadObj, [leadInfo.name]: leadInfo.value });
         addRecord(leadObj, ()=> {
@@ -75,4 +74,4 @@ const AddLead = () => {
 
 }
 
-export default AddLead;
+export default React.memo(AddLead);
