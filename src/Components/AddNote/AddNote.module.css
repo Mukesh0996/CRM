@@ -1,0 +1,173 @@
+.AddNoteDiv {
+    width: 60%;
+}
+
+.richTextOptions {
+    display: flex;
+    margin: 1rem 0 0 .5rem;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+.richTextOptions i {
+    padding: .5rem !important;
+}
+.richTextOptions i:hover {
+    background: #e1e0e0;
+    cursor: pointer;
+}
+
+.alignment {
+    position: relative;
+}
+.alignmentOptions {
+    position: absolute;
+    top: 40px;
+    background: white;
+    border: 1px solid rgb(100, 225, 239);
+    border-radius: 5px;
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+    transform-origin: top left;
+    z-index: 10;
+}
+
+
+.alignmentOptions i {
+    background: white;
+}
+.alignmentOptions i:hover {
+    background: #e1e0e0 ; 
+    cursor: pointer;
+}
+
+.list-style {
+    position: relative;
+}
+.list-style_options {
+    position: absolute;
+    top: 40px;
+    z-index: 10;
+    background: white;
+    border: 1px solid rgb(100, 225, 239);
+    border-radius: 5px;
+    transform: scale(0);
+    transition: transform 0.3s ease-in-out;
+}
+.list-style_options div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.list-style_options div:hover {
+    background: #e1e0e0;
+    cursor: pointer; 
+}
+.listStyleValue {
+    font-size: 10px;
+    min-width: 5rem;
+}
+.noteDiv {
+    position: relative;
+    width: 100%;
+}
+ .note {
+    margin: 0rem .5rem;
+    outline: none;
+    padding: 1rem .5rem;
+    padding-bottom: 3rem;
+    font-family: inherit;
+    width: 100%;
+    border: 1px solid #ccc;
+    min-height: 7rem;
+    transition: all 0.5s ease;
+    overflow: auto;
+}
+
+ .note:focus {
+    min-height: 9rem;
+    border-color: #60A5FA;
+}
+ .note:focus + .submitBtn {
+    display: block;
+}
+
+.note ul, ol {
+    margin: 1rem 0;
+    padding-left: 40px;
+}
+
+ .note ol li {
+    list-style-type: number;
+}
+.color {
+    position: relative;
+   
+}
+
+.color_options {
+    position: absolute;
+    padding: 5px;
+    width: 236px;
+    border: 1px solid #3B82F6;
+    background: white;
+    border-radius: 5px;
+    z-index: 10;
+    top: 40px;
+}  
+
+.colorDemo {
+    display: inline-block;
+    padding: .5rem !important;
+}
+.colorDemo::after {
+    position: absolute;
+    content: " ";
+    height: 3px;
+    width: 15px;
+    background: black;
+    bottom: 5px;
+    left: 6px;
+}
+.color_options ul {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+} 
+.color_options ul li {
+    list-style: none;
+    float: left;
+    display: inline;
+    height: 16px;
+    width: 16px;
+    margin: .5rem 0 0 .5rem;
+    border: 1px solid #ccc;
+    transition: all 0.2s ease;
+}
+.color_options ul li:hover {
+    cursor: pointer;
+    border-color: black;
+}
+
+
+.noteDiv .submitBtn {
+    display: none;
+    position: absolute;
+    padding: .3rem .6rem;
+    bottom: 15px;
+    right: 10px;
+    background: #3B82F6;
+    font: inherit;
+    border: 1px solid #3B82F6;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.noteDiv .submitBtn:hover {
+    color: #3B82F6;
+    background: white;
+    cursor: pointer;
+}

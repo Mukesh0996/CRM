@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import styles from './LoadingTopBar.module.css';
 const LoadingTopBar = () => {
 
@@ -10,4 +12,13 @@ const LoadingTopBar = () => {
 
 }
 
-export default LoadingTopBar;
+const TopBarLoading = () => {
+
+    return(
+        <React.Fragment>
+            { ReactDOM.createPortal(<LoadingTopBar/>, document.getElementById("crmLoading")) }
+        </React.Fragment>
+    )
+}
+
+export default TopBarLoading;
