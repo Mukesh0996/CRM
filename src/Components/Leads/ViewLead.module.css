@@ -134,9 +134,3 @@
     font-weight: bolder;
 }
 
-.hide {
-    display: none;
-}
-.show {
-    transform: scale(1);
-}

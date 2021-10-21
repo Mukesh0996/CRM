@@ -1,5 +1,8 @@
+:root {
+    --pesudo-background: black
+}
 .AddNoteDiv {
-    width: 60%;
+    width: 50%;
 }
 
 .richTextOptions {
@@ -9,9 +12,10 @@
     border-bottom: none;
     width: 100%;
     border-radius: 5px 5px 0 0;
+    background: whitesmoke;
 }
 .richTextOptions i {
-    padding: .5rem !important;
+    padding: .6rem !important;
 }
 .richTextOptions i:hover {
     background: #e1e0e0;
@@ -115,18 +119,25 @@
     border-radius: 5px;
     z-index: 10;
     top: 40px;
+    transform: scale(0);
+    transition: all 0.5s ease;
 }  
 
 .colorDemo {
     display: inline-block;
     padding: .5rem !important;
 }
+.colorDemo:hover {
+    background: #e1e0e0;
+    cursor: pointer;
+
+}
 .colorDemo::after {
     position: absolute;
     content: " ";
     height: 3px;
     width: 15px;
-    background: black;
+    background: var(--pesudo-background);
     bottom: 5px;
     left: 6px;
 }
@@ -170,4 +181,10 @@
     color: #3B82F6;
     background: white;
     cursor: pointer;
+}
+.hide {
+    display: none;
+}
+.show {
+    transform: scale(1);
 }

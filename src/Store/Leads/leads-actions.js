@@ -122,3 +122,10 @@ export const getSingleLeadRecord = async (data, token) => {
     return responseData;
 
 }
+
+export const LeadAddNote = (data, token) => {
+    return async () => {
+        let { orgId, leadId, note } = data;
+        console.log(orgId, leadId, note);
+    }
+}

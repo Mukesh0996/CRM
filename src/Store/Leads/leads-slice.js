@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let initial = { filterColumns:[], columns:[], leads:[], filteredLeads:[], canEdit: null, canCreate: null , filterApplied: false}
+let initial = { filterColumns:[], columns:[], leads:[], filteredLeads:[], canEdit: null, canCreate: null , filterApplied: false, notes:[]}
 
 const leadSlice = createSlice({
     name:"leads",
@@ -19,6 +19,8 @@ const leadSlice = createSlice({
             state.filteredLeads = action.payload.filteredLeads
         }, addFilterColumns (state, action) {
             state.filterColumns = action.payload.filterColumns
+        }, addNote (state, action) {
+            state.notes.push(action.payload.note)
         }
     }
 });

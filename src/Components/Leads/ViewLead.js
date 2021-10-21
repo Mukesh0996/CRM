@@ -6,7 +6,7 @@ import {  faBackward } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useHttp from '../../Hooks/httpHook';
 import TopBarLoading from '../../Pages/LoadingTopBar';
-import { getSingleLeadRecord } from '../../Store/Leads/leads-actions';
+import { getSingleLeadRecord, LeadAddNote } from '../../Store/Leads/leads-actions';
 import AddNote from '../AddNote/AddNote';
 
 const ViewLead = () => {
@@ -38,9 +38,6 @@ const ViewLead = () => {
        
     }
 
-    const mouseDownHandler = (e) => e.preventDefault();
-
-
 return <section className={styles.singleRecord}>
             { isLoading && <TopBarLoading/>}
             <section className={styles["singleRecord-actions"]}>
@@ -63,7 +60,7 @@ return <section className={styles.singleRecord}>
                        </div>
                        <div className={styles.notes}>
                             <h1>Notes:</h1>
-                            <AddNote/>                            
+                            <AddNote orgId={orgId} leadId={leadId} addNoteHandler={LeadAddNote}/>                            
                        </div>
                 </section>
             </section>

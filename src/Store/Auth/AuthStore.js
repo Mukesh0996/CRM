@@ -9,6 +9,7 @@ export const AuthContextProvider = (props) => {
     const [orgId, setOrgId] = useState(localStorage.getItem("orgId"));
     const [iat, setIat] = useState(localStorage.getItem("iat"));
     const [expAt, setExpAt] = useState(localStorage.getItem("expAt"));
+    const [name, setName] = useState(localStorage.getItem("userName"));
 
     const signOutHandler = () => {
         localStorage.removeItem("token");
@@ -16,9 +17,12 @@ export const AuthContextProvider = (props) => {
         localStorage.removeItem("orgId");
         localStorage.removeItem("expAt");
         localStorage.removeItem("iat");
+        localStorage.removeItem("userName");
+
     }
 
-    const signInHandler = ({token, userId, orgId}) => {
+    const signInHandler = ({token, userId, orgId, name}) => {
+        console.log({token, name, userId, orgId})
         const currentTime = new Date().getTime();
         const expiryTime = currentTime + 86400000;
         
@@ -27,12 +31,14 @@ export const AuthContextProvider = (props) => {
         setOrgId(orgId);
         setIat(currentTime);
         setExpAt(expiryTime);
+        setName(name);
 
         localStorage.setItem("token", token);
         localStorage.setItem("userId", userId);
         localStorage.setItem("orgId", orgId);
         localStorage.setItem("iat", currentTime);
         localStorage.setItem("expAt", expiryTime);
+        localStorage.setItem("userName", name);
         
     }
 
@@ -59,7 +65,8 @@ export const AuthContextProvider = (props) => {
         userId,
         orgId,
         signIn: signInHandler,
-        signOut: signOutHandler 
+        signOut: signOutHandler ,
+        name
     }
 
     return <AuthContext.Provider value={authContext}>{props.children}</AuthContext.Provider>

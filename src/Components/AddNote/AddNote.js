@@ -1,7 +1,11 @@
 import { useCallback } from 'react';
+import useHttp from '../../Hooks/httpHook';
+import TopBarLoading from '../../Pages/LoadingTopBar';
 import styles from './AddNote.module.css';
 
-const AddNote = () => {
+const AddNote = (props) => {
+
+    const {sendRequest, isLoading} = useHttp(props.addNoteHandler, true)
 
     //function to convert decial values to hexadecial
     const deimalToHexConvertor = (val) => {
@@ -22,7 +26,10 @@ const AddNote = () => {
         const rgbDecimalCodes = colorStyle.substring(4, colorStyle.length - 2).split(", "); //255, 102, 254); -> [255,102, 254]
         value = RGBParser(rgbDecimalCodes);
         document.execCommand(command, false, value);
-
+        if(colorStyle) {
+            const root = document.querySelector(":root");
+            root.style.setProperty("--pesudo-background", value);
+        }
 
     }
 
@@ -53,10 +60,17 @@ const AddNote = () => {
     }
 
     const mouseDownHandler = (e) => e.preventDefault();
+    let note;
+    const saveNoteHandler = () => {
+         note = document.getElementsByClassName(styles.note)[0].innerHTML;
+         sendRequest({ orgId: props.orgId, leadId: props.leadId, note})
+    }
 
 
     return (
         <div className={styles.AddNoteDiv}>
+            { isLoading && <TopBarLoading/> }
+            
             <div className={styles.richTextOptions}>
                 <i className="fas fa-bold" data-icon="bold" data-value="" onClick={clickHandler} onMouseDown={mouseDownHandler}></i>
                 <i className="fas fa-italic" data-icon="italic" data-value="" onClick={clickHandler} onMouseDown={mouseDownHandler}></i>
@@ -75,9 +89,9 @@ const AddNote = () => {
                         <div data-value="" data-icon="insertorderedlist" onClick={clickHandler} onMouseDown={mouseDownHandler}> <i className="fas fa-list-ol"></i><span className={styles.listStyleValue}>Ordered List</span></div>
                     </div>
                 </div>
-                <div id="color" className={styles.color}>
+                <div id="color" className={styles.color} onClick={toggleHandler} onMouseDown={mouseDownHandler}>
                     <span className={styles.colorDemo}>A</span>
-                    <div className={styles.color_options}>
+                    <div id="color_options" className={`${styles.color_options} ${styles.hide}`}>
                         <ul>
                             <li style={{ backgroundColor: "rgb(255, 255, 255)" }} data-icon="foreColor"  onClick={clickHandler} onMouseDown={mouseDownHandler}></li>
                             <li style={{ backgroundColor: "rgb(204, 238, 255)" }} data-icon="foreColor"  onClick={fontColorChangeHandler} onMouseDown={mouseDownHandler}></li>
@@ -179,8 +193,9 @@ const AddNote = () => {
             </div>
             <div className={styles.noteDiv}>
                 <div className={styles.note} placeholder="Enter a note.." contentEditable={true} placeholder="Add a note..."></div>
-                <button className={styles.submitBtn} onMouseDown={mouseDownHandler}>Add Note.</button>
+                <button className={styles.submitBtn} onMouseDown={mouseDownHandler} onClick={saveNoteHandler}>Add Note.</button>
             </div>
+            { note } 
         </div>
     )
 
