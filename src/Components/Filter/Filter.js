@@ -35,7 +35,8 @@ const Filter = ({ leadsCols, filter, module }) => {
                 <p className={styles.lighter}>{col.label}</p>
             </div>
                 { showFilter && filterValue === col.label.toLowerCase().split(" ").join("_") && <div onClick={() => { setShowFilterMethod(prevState => !prevState) }} className={styles.filterCriteria}>
-                    { filterByMethod || <span style={{fontWeight:"lighter"}}>Select Filter</span> } { showFilterMethods && <ul className={styles.filterMethods}> { filterMethodsElements } </ul>}
+                    { filterByMethod || <span style={{fontWeight:"lighter"}}>Select Filter</span> } 
+                    { showFilterMethods && <ul className={styles.filterMethods}> { filterMethodsElements } </ul>}
                 </div> }
                 { showFilter && filterValue === col.label.toLowerCase().split(" ").join("_") && <div className={styles.filterInput}> 
                     <input ref={filterRef} style={{ minWidth: "4rem" }} name={filterValue} type="text"  /> 

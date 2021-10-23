@@ -8,6 +8,7 @@ import useHttp from '../../Hooks/httpHook';
 import TopBarLoading from '../../Pages/LoadingTopBar';
 import { getSingleLeadRecord, LeadAddNote } from '../../Store/Leads/leads-actions';
 import AddNote from '../AddNote/AddNote';
+import { useSelector } from 'react-redux';
 
 const ViewLead = () => {
 
@@ -15,8 +16,9 @@ const ViewLead = () => {
     const {orgId, leadId} = params;
     const [lead, setLead] = useState([]);
     let displayRecord;
-
+    const notes = useSelector(state => state.leads.notes);
     const {sendRequest : fetchLeadRecord , isLoading, error} = useHttp(getSingleLeadRecord, false);
+    console.log(notes);
 
     useEffect(() => {
         fetchLeadRecord({orgId, leadId}, (leadRecord) => {

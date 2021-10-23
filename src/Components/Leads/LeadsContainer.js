@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import LoadingPage from '../../Pages/loadingPage';
+import TopBarLoading from '../../Pages/LoadingTopBar';
 import { leadActions } from '../../Store/Leads/leads-slice';
 import Filter from '../Filter/Filter';
 import Record from '../Record/Record';
@@ -20,7 +20,7 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
 
     const [filterMethods] = useState([is, contains]);
     const [filterString] = useState(["is", "contains"]);
-
+    // 9840765219
     const filterLeads = (obj) => {
         const methodIndex = filterString.findIndex(filter => filter === obj.filterByMethod);
         const method = filterMethods[methodIndex];
@@ -36,7 +36,7 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
 
     return (<Fragment>
         <section className={styles.leadsContainer}>
-            { isLoading && <LoadingPage /> }
+            { isLoading && <TopBarLoading /> }
             <Filter leadsCols={filterCols} filter={filterLeads} module="leads" />
             <section className={styles.leadsrecords}>
                 <div className={styles["lead-columns"]}>{columns}</div>

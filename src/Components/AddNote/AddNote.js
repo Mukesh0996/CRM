@@ -1,12 +1,14 @@
 import { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import useHttp from '../../Hooks/httpHook';
 import TopBarLoading from '../../Pages/LoadingTopBar';
+import { leadActions } from '../../Store/Leads/leads-slice';
 import styles from './AddNote.module.css';
 
 const AddNote = (props) => {
 
     const {sendRequest, isLoading} = useHttp(props.addNoteHandler, true)
-
+    const dispatcher = useDispatch();
     //function to convert decial values to hexadecial
     const deimalToHexConvertor = (val) => {
         const hexValue = (Number(val)).toString(16);
@@ -58,14 +60,12 @@ const AddNote = (props) => {
 
         }
     }
-
     const mouseDownHandler = (e) => e.preventDefault();
-    let note;
     const saveNoteHandler = () => {
-         note = document.getElementsByClassName(styles.note)[0].innerHTML;
-         sendRequest({ orgId: props.orgId, leadId: props.leadId, note})
+        let note = document.getElementsByClassName(styles.note)[0].innerHTML;
+        dispatcher(leadActions.addNote({content: note, orgId: 100}));
+        //  sendRequest({ orgId: props.orgId, leadId: props.leadId, note})
     }
-
 
     return (
         <div className={styles.AddNoteDiv}>
@@ -195,7 +195,6 @@ const AddNote = (props) => {
                 <div className={styles.note} placeholder="Enter a note.." contentEditable={true} placeholder="Add a note..."></div>
                 <button className={styles.submitBtn} onMouseDown={mouseDownHandler} onClick={saveNoteHandler}>Add Note.</button>
             </div>
-            { note } 
         </div>
     )
 
