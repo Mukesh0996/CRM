@@ -7,7 +7,7 @@
 
 .richTextOptions {
     display: flex;
-    margin: 1rem 0 0 .5rem;
+  margin-top: 1rem;
     border: 1px solid #ccc;
     border-bottom: none;
     width: 100%;
@@ -77,7 +77,7 @@
     width: 100%;
 }
  .note {
-    margin: 0rem .5rem;
+  
     outline: none;
     padding: 1rem .5rem;
     padding-bottom: 3rem;

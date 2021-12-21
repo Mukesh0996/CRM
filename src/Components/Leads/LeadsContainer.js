@@ -35,7 +35,7 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
     </React.Fragment>;
 
     return (<Fragment>
-        <section className={styles.leadsContainer}>
+                <section className={styles.leadsContainer}>
             { isLoading && <TopBarLoading /> }
             <Filter leadsCols={filterCols} filter={filterLeads} module="leads" />
             <section className={styles.leadsrecords}>

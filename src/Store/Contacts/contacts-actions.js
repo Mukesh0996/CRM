@@ -3,7 +3,7 @@ import { contactsActions } from "./contacts-slice";
 const url = "http://localhost:8080";
 
 export const getContactsFields = async (orgId, token) => {
-        const response = await fetch(`${url}/org/${orgId}/contacts/contactsfields`,{
+        const response = await fetch(`${url}/contacts/org/${orgId}/contactsfields`,{
             method:"GET",
             headers: {
                 "Content-Type":"application/json",

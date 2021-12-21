@@ -14,13 +14,10 @@ const AddContact = () => {
     const {orgId} = useContext(AuthContext);
     if(address) {
         //shipping fields
-        shippingInputFields = Object.values(address.shipping).map(obj => <Input kwy={obj.id} label={obj.label} type={obj.type} name={obj.name} value={obj.value} handleChange={inputHandler} section={obj.section}/>)
-
-
+        shippingInputFields = Object.values(address.shipping).map(obj => <Input key={obj.id} label={obj.label} type={obj.type} name={obj.name} value={obj.value} handleChange={inputHandler} section={obj.section}/>)
         //billing fields
-        billingInputFields = Object.values(address.billing).map(obj => <Input kwy={obj.id} label={obj.label} type={obj.type} name={obj.name} value={obj.value} handleChange={inputHandler} section={obj.section}/>)
+        billingInputFields = Object.values(address.billing).map(obj => <Input key={obj.id} label={obj.label} type={obj.type} name={obj.name} value={obj.value} handleChange={inputHandler} section={obj.section}/>)
     }
-    
     const saveHandler = (event) => {
 
         event.preventDefault();
@@ -30,7 +27,6 @@ const AddContact = () => {
         Object.values(address.shipping).map(contactShippingInfo => contactRecordObj = { ...contactRecordObj, [contactShippingInfo.name] : contactShippingInfo.value });
         console.log(contactRecordObj);
     };
-
 
     return <form className={styles.addContactForm} autoComplete="none" onSubmit={saveHandler}>
                { isLoading && <LoadingPage/>}
