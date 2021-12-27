@@ -3,15 +3,28 @@
 }
 .AddNoteDiv {
     width: 50%;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    transition: all 0.2s linear;
+}
+
+.border {
+    border: 1px solid #3B82F6;
+    box-shadow: 0 0 10px 0px #3B82F6;
+}
+
+.AddNoteDiv.border .note {
+    min-height: 9rem;
 }
 
 .richTextOptions {
     display: flex;
-  margin-top: 1rem;
-    border: 1px solid #ccc;
-    border-bottom: none;
+    position: relative;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    border-radius: 5px 5px 0 0;
     background: whitesmoke;
 }
 .richTextOptions i {
@@ -75,18 +88,15 @@
 .noteDiv {
     position: relative;
     width: 100%;
+    border-radius: 5px 5px 0 0;
 }
  .note {
-  
-    outline: none;
-    padding: 1rem .5rem;
-    padding-bottom: 3rem;
-    font-family: inherit;
-    width: 100%;
-    border: 1px solid #ccc;
     min-height: 7rem;
     transition: all 0.5s ease;
     overflow: auto;
+    padding: 1rem;
+    padding-bottom: 3.5rem;
+    outline: none;
 }
 
  .note:focus {
@@ -162,23 +172,41 @@
     border-color: black;
 }
 
+.AddNoteDiv 
 
-.noteDiv .submitBtn {
-    display: none;
+.buttons {
     position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    bottom: 8px;
+   width: 100%;
+   padding-top: 10px;
+   border-top: 1px solid #ccc;
+}
+.buttons button {
     padding: .3rem .6rem;
-    bottom: 15px;
-    right: 10px;
-    background: #3B82F6;
     font: inherit;
-    border: 1px solid #3B82F6;
     color: white;
     border-radius: 5px;
     transition: all 0.3s ease;
+    margin-right: .5rem;
 }
-
-.noteDiv .submitBtn:hover {
+.submitBtn {
+    background: #3B82F6;
+    border: 1px solid #3B82F6;
+}
+.submitBtn:hover {
     color: #3B82F6;
+    background: white;
+    cursor: pointer;
+}
+.cancelBtn {
+    background: #f87171;
+    border: 1px solid #f87171;
+}
+.cancelBtn:hover {
+    color: #f87171;
     background: white;
     cursor: pointer;
 }

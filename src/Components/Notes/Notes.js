@@ -1,5 +1,6 @@
 import styles from './Notes.module.css';
-import React, { useEffect } from "react";
+import React from "react";
+import AddNote from './AddNote';
 
 const Notes = (props) => {
 
@@ -10,13 +11,13 @@ const Notes = (props) => {
             elem.className = styles.note;
             elem.innerHTML = note.content;
             notesDiv.appendChild(elem);
-
         }
     });
 
-    return <div className={styles.notes}>
-                
-            </div>
+    return <React.Fragment>
+    {props.notes.length>0 && <div className={styles.notes}></div>}
+    <AddNote leadId={props.leadId} orgId={props.orgId}/>
+    </React.Fragment>
 
 }
 

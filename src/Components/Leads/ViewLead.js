@@ -5,8 +5,7 @@ import {  faBackward } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useHttp from '../../Hooks/httpHook';
 import TopBarLoading from '../../Pages/LoadingTopBar';
-import { getSingleLeadRecord, LeadAddNote } from '../../Store/Leads/leads-actions';
-import AddNote from '../Notes/AddNote';
+import { getSingleLeadRecord } from '../../Store/Leads/leads-actions';
 import { useSelector } from 'react-redux';
 import Notes from '../Notes/Notes';
 
@@ -17,7 +16,6 @@ const ViewLead = () => {
     const [lead, setLead] = useState([]);
     let displayRecord;
     const notes = useSelector(state => state.leads.notes);
-    console.log(notes);
     const {sendRequest : fetchLeadRecord , isLoading, error} = useHttp(getSingleLeadRecord, false);
     useEffect(() => {
         fetchLeadRecord({orgId, leadId}, (leadRecord) => {
@@ -61,8 +59,8 @@ return <section className={styles.singleRecord}>
                        </div>
                        <div className={styles.notes}>
                             <h1>Notes:</h1>
-                            { notes.length > 0 &&  <Notes notes={notes} /> }
-                            <AddNote orgId={orgId} leadId={leadId} addNoteHandler={LeadAddNote}/>                            
+                            {  <Notes notes={notes} orgId={orgId} leadId={leadId}  /> }
+                                              
                        </div>
                 </section>
             </section>
