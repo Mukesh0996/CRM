@@ -1,3 +1,4 @@
+
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import useHttp from '../../Hooks/httpHook';
@@ -45,7 +46,7 @@ const AddNote = (props) => {
 
     const toggleHandler = (event) => {
         const element = document.getElementById(`${event.currentTarget.getAttribute("id")}_options`);
-        console.log(element);
+       
         if (element.classList.contains(styles.hide)) {
             element.classList.remove(styles.hide);
             setTimeout(() => {
@@ -64,8 +65,8 @@ const AddNote = (props) => {
     const mouseDownHandler = (e) => e.preventDefault();
     const saveNoteHandler = () => {
         let note = document.getElementsByClassName(styles.note)[0].innerHTML;
-        dispatcher(leadActions.addNote({content: note, orgId: 100}));
-         sendRequest({ orgId: props.orgId, leadId: props.leadId, note})
+         sendRequest({ orgId: props.orgId, leadId: props.leadId, note});
+         dispatcher(leadActions.addNote({content: note, orgId: props.orgId}));
     }
 
     return (

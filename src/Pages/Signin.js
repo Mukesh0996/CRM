@@ -23,7 +23,7 @@ const SignIn = () => {
             valueChangeHandler: passwordChangehandler, 
             blurHandler: passwordBlurHandler, 
             isValid: passwordValid, 
-            isTouched: passwordTouched} = useInput(isEmpty);
+            } = useInput(isEmpty);
 
     const { isLoading, error, sendRequest } = useHttp(postSignIn, false);
 

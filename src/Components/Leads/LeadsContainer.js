@@ -31,7 +31,7 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
         <div style={{ minWidth: "3rem", position: "fixed", backgroundColor: "#fff", borderRadius: "10px 0 0 0" }} className={styles.column}>
             <input type="checkbox" />
         </div>
-        { leadCols.map((key, index) => <div key={index} className={styles.column}>{key.label}</div>) }
+        { leadCols.map((col, index) => <div key={index} className={styles.column}>{col.label}</div>) }
     </React.Fragment>;
 
     return (<Fragment>

@@ -10,14 +10,14 @@ const useHttp = (requestFn, dispatcherIsTrue) => {
     const ctx = useContext(AuthContext);
     const dispatch = useDispatch();
 
-    const sendRequest = async (orgId, sendData) => {
+    const sendRequest = async (data, sendData) => {
         setIsLoading(true);
         let responseData;
         try {
             if(dispatcherIsTrue) {
-               responseData =  await dispatch(requestFn(orgId, ctx.token));
+               responseData =  await dispatch(requestFn(data, ctx.token));
             } else {
-                responseData = await requestFn(orgId, ctx.token);
+                responseData = await requestFn(data, ctx.token);
                 sendData(responseData);  //transports the data from the server to the respective function component
             }   
         } catch (error) {

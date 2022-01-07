@@ -102,7 +102,6 @@ export const addLeadRecord = (data, token) => {
 }
 
 export const getSingleLeadRecord = async (data, token) => {
-
     const { orgId, leadId } = data;
     const response = await fetch(`${url}/leads/org/${orgId}/lead/${leadId}`, {
         method: "GET",

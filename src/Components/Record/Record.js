@@ -8,7 +8,6 @@ const Record = (lead) => {
 
     const checkBoxHandler = () => {
        setChecked(prevState => !prevState);
-       console.log(lead.id);
     }
 
     return   (<div className={styles.record}>

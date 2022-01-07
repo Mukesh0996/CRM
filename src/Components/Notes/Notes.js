@@ -3,7 +3,6 @@ import React from "react";
 import AddNote from './AddNote';
 
 const Notes = (props) => {
-
     let notesDiv = document.getElementsByClassName(styles.notes)[0];
     props.notes.forEach(note => { 
         if(!!notesDiv) {
@@ -15,8 +14,8 @@ const Notes = (props) => {
     });
 
     return <React.Fragment>
-    {props.notes.length>0 && <div className={styles.notes}></div>}
-    <AddNote leadId={props.leadId} orgId={props.orgId}/>
+    { props.notes.length>0 && <div className={styles.notes}></div> }
+    <AddNote RecId={props.RecId} orgId={props.orgId}/>
     </React.Fragment>
 
 }

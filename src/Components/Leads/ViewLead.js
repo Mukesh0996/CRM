@@ -17,6 +17,7 @@ const ViewLead = () => {
     let displayRecord;
     const notes = useSelector(state => state.leads.notes);
     const {sendRequest : fetchLeadRecord , isLoading, error} = useHttp(getSingleLeadRecord, false);
+
     useEffect(() => {
         fetchLeadRecord({orgId, leadId}, (leadRecord) => {
             setLead(leadRecord.record)
@@ -59,7 +60,7 @@ return <section className={styles.singleRecord}>
                        </div>
                        <div className={styles.notes}>
                             <h1>Notes:</h1>
-                            {  <Notes notes={notes} orgId={orgId} leadId={leadId}  /> }
+                            {  <Notes notes={notes} orgId={orgId} RecId={leadId}  /> }
                                               
                        </div>
                 </section>
