@@ -1,5 +1,4 @@
 import styles from './SignIn.module.css';
-import image from '../images/image.png'
 import { Fragment, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LoadingPage from './loadingPage';
@@ -47,26 +46,23 @@ const SignIn = () => {
                     <section className={styles.form}>
                         <div className={styles["form-detail"]}>
                             <h1>Sign in</h1>
-                            <p>to access CRM.</p>
+                            <p>to access CRM</p>
                         </div>
                     <form onSubmit={signInhandler}>
                         <div className={styles["form-control"]}>
                             <label htmlFor="email">Email</label>
-                            <input type="text" id="email" onChange={emailChangehandler} onBlur={emailBlurHandler}/>
+                            <input className={styles.inp} type="text" id="email" onChange={emailChangehandler} onBlur={emailBlurHandler} accessKey='e'/>
                             { !emailValid && emailTouched && <p className={styles.error}>Please enter a valid email</p> }
                             { !error.isValid && error.value==="email" && <p className={styles.error}>{error.message}</p> }
                         </div>
                         <div className={styles["form-control"]}>
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" onChange={passwordChangehandler} onBlur={passwordBlurHandler}/>
+                            <input className={styles.inp} type="password" id="password" onChange={passwordChangehandler} onBlur={passwordBlurHandler}/>
                             { !error.isValid && error.value==="password" && <p className={styles.error}>{error.message}</p> }
                         </div>
                         <button className={styles.submitBtn}>Sign In</button>
                     </form>
                 </section>
-                <section className={styles.rightContainer}> 
-                   <img src={image} alt="CRM"/>
-                 </section>
              </main>
              </Fragment>
 }
