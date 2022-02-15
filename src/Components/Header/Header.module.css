@@ -15,7 +15,7 @@
 .navigation{
     display: inline-block;
     vertical-align: middle;
-    width: calc(100% - 90px);
+    width: calc(100% - 100px);
 }
 
 .item {

@@ -28,9 +28,7 @@ const useHttp = (requestFn, dispatcherIsTrue) => {
                 value: error.value
             });
         }
-        setTimeout(()=> {
             setIsLoading(false);
-        },2000)
        
     }
 
