@@ -31,7 +31,6 @@ const useHttp = (requestFn, dispatcherIsTrue) => {
             setIsLoading(false);
        
     }
-
     return {
         isLoading,
         sendRequest,

@@ -1,8 +1,4 @@
-body {
-    min-height: 100vh;
-    overflow: auto;
-    overflow-x: hidden;
-}
+
 .addContactForm {
     background-color: white;
     position: relative;    

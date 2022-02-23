@@ -8,7 +8,6 @@ import {BrowserRouter} from 'react-router-dom';
 import { AuthContextProvider } from './Store/Auth/AuthStore';
 import store from './Store/index';
 
-
 ReactDOM.render(
   <AuthContextProvider>
     <BrowserRouter>

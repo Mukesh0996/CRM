@@ -25,7 +25,6 @@ const leadSlice = createSlice({
         }
     }
 });
-
 export const leadActions = leadSlice.actions;
 
 export default leadSlice;

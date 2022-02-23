@@ -28,7 +28,7 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
     }
 
     let columns = <React.Fragment>
-        <div style={{ minWidth: "2rem", position: "relative", backgroundColor: "#fff", borderRadius: "10px 0 0 0" }} className={styles.column}>
+        <div style={{ minWidth: "2rem", position: "fixed", backgroundColor: "#fff", borderRadius: "10px 0 0 0" }} className={styles.column}>
             <input type="checkbox" />
         </div>
         { leadCols.map((col, index) => <div key={index} className={styles.column}>{col.label}</div>) }
@@ -42,7 +42,7 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
                 <div className={styles["lead-columns"]}>{columns}</div>
                 {filterApplied && filteredLeads.length === 0 && <div style={{ height: "100%", backgroundColor: "#fff", display: "flex", justifyContent: "center", alignItems: "center" }}><p>No Leads present for the specified criteria. Please refresh the page.</p></div>}
                 {!!leads && filteredLeads.length === 0 && !filterApplied && leads.map(lead => <Record lead={lead} key={lead.id} />)}
-                {filterApplied && filteredLeads.length !== 0 && filteredLeads.map(lead => <Record lead={lead} key={lead.id} />)}
+                {filterApplied && filteredLeads.length !== 0 && filteredLeads.map(lead => <Record key={lead.id} lead={lead} key={lead.id} />)}
             </section>
             
         </section>

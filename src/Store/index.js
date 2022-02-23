@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import leadActions from './Leads/leads-slice';
+import leadSlice from './Leads/leads-slice';
+import contactsSlice from "./Contacts/contacts-slice";
+import homeSlice from "./Home/home-slice";
 
 const store = configureStore({
     reducer: {
-        leads: leadActions.reducer
+        leads: leadSlice.reducer,
+        contacts: contactsSlice.reducer,
+        home: homeSlice.reducer
     }
 });
 

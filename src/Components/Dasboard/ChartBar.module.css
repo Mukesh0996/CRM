@@ -1,0 +1,30 @@
+.chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+}
+
+.chartBar {
+    width: 40px;
+    height: 150px;
+    border: 0.5px dashed rgb(219, 217, 217);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+}
+.chartBar_fill {
+    width: 100%;
+    height: 0%;
+    background: #22d3ee;
+}
+
+.chartBarvalue, .chartBar_label {
+    color: #ccc;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.chartBar_label {
+    font-weight: bold;
+}
