@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let initial = { filterColumns:[], contacts:[], canEdit: null, canCreate: null , filterApplied: false };
+let initial = { filterColumns:[], columns:[], contacts:[], canEdit: null, canCreate: null , filterApplied: false, notes:[] };
 
 const contactsSlice = createSlice({
     name:"contacts",

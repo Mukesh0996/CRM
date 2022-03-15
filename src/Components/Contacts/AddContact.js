@@ -10,6 +10,7 @@ import styles from './AddContact.module.css';
 const AddContact = () => {
 
     const {isLoading, information, address, inputHandler} = useForm(getContactsFields, false);
+    console.log(address);
     let shippingInputFields, billingInputFields;
     const {orgId} = useContext(AuthContext);
     if(address) {

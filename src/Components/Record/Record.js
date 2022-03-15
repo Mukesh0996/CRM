@@ -11,11 +11,11 @@ const Record = (lead) => {
     }
 
     return   (<div className={styles.record}>
-        <div style={{minWidth:"3rem", position:"fixed"}} className={styles.checkbox}>
+        <div style={{minWidth:"3rem", position:"relative"}} className={styles.checkbox}>
              <input type="checkbox" checked={checked} onChange={checkBoxHandler}/>
         </div>
         <Link className={styles.column} to={`/org/${orgId}/leads/${lead.lead.id}`}>
-        <div style={{marginLeft:"3rem"}} className={ styles.column}> {lead.lead.first_name|| "-"} </div> 
+        <div className={ styles.column}> {lead.lead.first_name|| "-"} </div> 
         <div className={ styles.column }> { lead.lead.last_name|| "-" } </div> 
         <div className={styles.column} style={{minWidth:"18rem"}}> { lead.lead.company|| "-" }  </div>
         <div className={styles.column}> { lead.lead.email|| "-" } </div>
