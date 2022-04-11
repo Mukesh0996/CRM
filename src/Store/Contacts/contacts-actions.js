@@ -19,3 +19,54 @@ export const getContactsFields = async (orgId, token) => {
         }
         return responseData;
 }
+
+export const getAllContacts =  (orgId, token) => {
+    return async (dispatch) => {
+      
+        const response = await fetch(`${url}/contacts/org/${orgId}/getrecords`, {
+            method:"GET",
+            headers : {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+    
+        const responseData = await response.json();
+        if(!response.ok) {
+            let error = new Error(responseData.message);
+            error.isValid = responseData.isValid;
+            error.value = responseData.value;
+            throw(error);
+        }
+       dispatch(contactsActions.replaceContacts({
+           contacts: responseData.contacts,
+           cols: responseData.contactsCols
+       }))
+    }
+
+}
+
+export const getContactsFilterColumns =  (orgId, token) => {
+
+    return async (dispatch) => {
+        const response = await fetch(`${url}/contacts/org/${orgId}/getfiltercolumns`, {
+            method : "GET",
+            headers : {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        const responseData = await response.json();
+        if(!response.ok){
+            let error = new Error(responseData.message);
+            error.isValid = responseData.isValid;
+            error.value = responseData.value;
+            throw(error);
+        }
+      
+        dispatch(contactsActions.addFilterColumns({
+            filterColumns: responseData.data.contactFilerColumns
+        }))
+    }
+
+}

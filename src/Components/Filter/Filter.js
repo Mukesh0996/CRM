@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import styles from './Filter.module.css';
 
 const Filter = ({ leadsCols, filter, module }) => {
-
+   
     const [showFilter, setShowFilter] = useState(false);
     const [filterValue, setFilterValue] = useState("");
     const [showFilterMethods, setShowFilterMethod] = useState(false);

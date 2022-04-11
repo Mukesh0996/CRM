@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TopBarLoading from '../../Pages/LoadingTopBar';
+import { contactsActions } from '../../Store/Contacts/contacts-slice';
 import { leadActions } from '../../Store/Leads/leads-slice';
 import Filter from '../Filter/Filter';
 import Record from '../Record/Record';
@@ -15,7 +16,7 @@ const LeadsContainer = ({ leadCols, isLoading, filterCols }) => {
         const leadRecs = leads.filter((lead) => lead[name] === value);
         dispatch(leadActions.addFilteredLeads({filteredLeads: leadRecs}));
     };
-
+    console.log(is)
     const contains = () => { };
 
     const [filterMethods] = useState([is, contains]);

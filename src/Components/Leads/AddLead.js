@@ -60,15 +60,15 @@ const AddLead = () => {
     return (
             <form className={styles.form} autoComplete="none">
                 { isLoading && <LoadingPage/> }
-                <FormActions saveHandler={saveHandler}/>
-                <div className={styles.formfields}>
-                        {informationFields}
-                        {addressFields}
-                    <h3>Description Information</h3>
-                    <div  className={styles.inp}>
-                        <textarea type="text" name="description" onChange={(e) => setDescription(e.target.value)}></textarea>
-                    </div>
-                </div>       
+          <FormActions saveHandler={saveHandler}/>
+        <div className={styles.formfields}>
+                {informationFields}
+                {addressFields}
+           { !isLoading &&<> <h3>Description Information</h3>
+            <div  className={styles.inp}>
+                <textarea type="text" name="description" onChange={(e) => setDescription(e.target.value)}></textarea>
+            </div></>}
+        </div>       
             </form>
     )
 
